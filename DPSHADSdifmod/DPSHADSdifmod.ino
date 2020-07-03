@@ -1,6 +1,6 @@
 //Este codigo abarca el manejo del sensor de efecto hall,
 //el potenciometro digital X9C103S
-//Y el ADS1115 en modo diferencial
+//Y el ADS1115 en modo diferencial.
 //Version que envia datos a processing, usar este
 
 //BotRelevador
