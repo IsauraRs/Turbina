@@ -1,6 +1,6 @@
 //Este codigo abarca el manejo del sensor de efecto hall,
 //el potenciometro digital X9C103S
-//Y el ADS1115
+//Y el ADS1115 en modo diferencial
 //Version que envia datos a processing, usar este
 
 //BotRelevador
@@ -19,6 +19,9 @@ char estado;
 // Crear objeto de la clase
 Adafruit_ADS1115 ads;
 
+//Factor de escala para conversion
+float factorEscala = 0.1875F;
+
 //Pines del potenciometro
 DigiPot pot(8,7,9);
 
@@ -33,6 +36,7 @@ unsigned long passedtime;
 
 //Contador 
 void isr()
+
 
  {
    
@@ -50,7 +54,8 @@ void setup(void)
   pinMode(foco,OUTPUT);
   
   //Para leer variaciones mas pequeñas
-  ads.setGain(GAIN_ONE);
+  //ads.setGain(GAIN_ONE);
+  ads.setGain(GAIN_TWOTHIRDS);
   
   //Se inicia el ADS1115
   ads.begin();
@@ -152,10 +157,17 @@ void DP()
     delay(1000);
     
     // Obtiene datos del pin A0 del ADS1115 y los imprime
-    short adc0 = ads.readADC_SingleEnded(0);
-    Serial.print("ADS: "); 
-    Serial.println(adc0);
- 
+    //short adc0 = ads.readADC_SingleEnded(0);
+    //Serial.print("ADS: "); 
+    //Serial.println(adc0);
+
+    short diferencia_0_1 = ads.readADC_Differential_0_1();
+    float volts = (diferencia_0_1 * factorEscala)/1000.0;
+    Serial.print("Diferencia 0-1");
+    Serial.println(diferencia_0_1);
+    Serial.print("Voltaje: ");
+    Serial.println(volts,4);
+   
     //delay(1000);
 
     //Serial.print(",");
@@ -192,9 +204,16 @@ void DP()
     delay(1000);
     
     // Obtiene datos del pin A0 del ADS1115 y los imprime
-    short adc0 = ads.readADC_SingleEnded(0);
-    Serial.print("ADS: "); 
-    Serial.println(adc0);
+    //short adc0 = ads.readADC_SingleEnded(0);
+    //Serial.print("ADS: "); 
+    //Serial.println(adc0);
+
+    short diferencia_0_1 = ads.readADC_Differential_0_1();
+    float volts = (diferencia_0_1 * factorEscala)/1000.0;
+    Serial.print("Diferencia 0-1");    
+    Serial.println(diferencia_0_1);
+    Serial.print("Voltaje: ");
+    Serial.println(volts,4);
  
     //delay(1000);
 
