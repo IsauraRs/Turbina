@@ -46,7 +46,7 @@ void serialEvent(Serial port)
   String bufString = port.readStringUntil('\n');
   datos = bufString;
   
-  //Este más o menos funciona
+  //Este más o menos funciona yuyu
   //datos = bufString;n
   //println(bufString);
   //for(i=0;i<data.length;i++)
