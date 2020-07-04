@@ -7,6 +7,7 @@ from telegram.ext import Updater
 from telegram.ext import CommandHandler
 from telegram.ext import MessageHandler
 from telegram.ext import Filters
+#Revisar que el puerto serial sea el que se está usando en arduino
 ser = serial.Serial('/dev/ttyACM0',9600)
 
 def start(bot,update): #Declara funcion
@@ -32,4 +33,3 @@ dispatcher.add_handler(start_handler)
 dispatcher.add_handler(turnOn_handler)
 dispatcher.add_handler(turnOff_handler)
 update.start_polling()
-#####
