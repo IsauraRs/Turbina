@@ -78,7 +78,7 @@ void loop(void)
   
   DP();
 
-  //Activa el relay por medio de telegram
+  //Activa el relay por medio del bot de telegram (se hace conexión con python)
   if(Serial.available()>0)
   {
     estado=Serial.read();
