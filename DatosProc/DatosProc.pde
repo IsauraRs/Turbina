@@ -5,6 +5,7 @@ String datos;
 void setup()
 {
   size(700,700);
+  //Revisar que el puerto coincida con el que se está utilizando en arduino
   port = new Serial(this, "/dev/ttyACM0",9600);
   port.bufferUntil('\n');
 }
