@@ -1,9 +1,12 @@
-#Recibe los datos del puerto serial, los guarda en la lista "lecturas_arduino" y los imprime
+#Receives data from serial port, saves them into the list "arduino_lectures" and prints them
 import serial
-#Revisar que el puerto serial sea el que se está utilizando en arduino
-arduino = serial.Serial('/dev/ttyUSB0', 9600)
-lecturas_arduino = [] #Se declara la lista
+
+#Check if the serial port is the same you're using in arduino
+arduino = serial.Serial('/dev/ttyACM0', 9600)
+arduino_lectures = [] #The list is declared
+
 while True:
     values = arduino.readline()
-    lecturas_arduino.append(values) #Agrega los datos a la lista
-    print (lecturas_arduino)
+    vd = values.decode() #Decodes the values from byte to string
+    arduino_lectures.append(vd) #Adds the values to the list
+    print(arduino_lectures)
