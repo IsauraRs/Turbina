@@ -13,5 +13,3 @@ def carga(param2, param3, param4, param5):
     conexion.commit()
     cursor.close()
     conexion.close()
-
-#carga(nl[0,1,2,3])
