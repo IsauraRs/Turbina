@@ -15,7 +15,7 @@ while True:
     nl=[]
     for i in range(len(arduino_lectures)):
         n = arduino_lectures[i].replace('\r\n', '') #Removes the \r\n characters from the string and replace them with a space
-        nl.append(n)
+        nl.append(n) #Adds to the list nl the values without the "\r\n" characters
     if len(nl) > 4:
-        conex.carga(nl[0],nl[1],nl[2],nl[3])
+        conex.carga(nl[0],nl[1],nl[2],nl[3]) #Loads the values sent from arduino to the table
     print(nl)
