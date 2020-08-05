@@ -1,5 +1,8 @@
 import psycopg2
 from tkReg import *
+import tkReg as w
+
+dl = []
 
 host = 'ec2-34-225-82-212.compute-1.amazonaws.com'
 
@@ -12,8 +15,13 @@ def vista(dpVal):
     cursor = conexion.cursor()
     cursor.execute("SELECT valor_pot_digt FROM lectura WHERE valor_pot_digt = %s", (dpVal,))
     datos = cursor.fetchall()
+
+    for g in datos:
+        dl.append(g)
+
+    #print(datos)
     conexion.commit()
     cursor.close()
     conexion.close()
-    print(datos)
+
 #vista(str(570))
