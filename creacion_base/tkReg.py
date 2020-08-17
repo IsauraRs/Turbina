@@ -144,9 +144,8 @@ class Menu():
 
         self.imi = PhotoImage(file = "image72.png")
         self.imag2 = Label(self.dpqt , image = self.imi)
-        self.imag2.grid(row = 0 , column = 90 , padx = 0, pady = 0) 
-        self.imag2.config(bg = "light sea green")
-            
+        self.imag2.grid(row = 0 , column = 8 , padx = 0, pady = 0) 
+        self.imag2.config(bg = "light sea green")    
 
         dpvLabel = Label(self.dpqt , text = "Valor: ")
         dpvLabel.grid(row = 1, column = 1 , padx = 0, pady = 5)
@@ -157,44 +156,44 @@ class Menu():
         dpven.grid(row = 1 , column = 2 , padx = 5 , pady = 5)
         
         sbp = Button(self.dpqt , text = 'Buscar', command = self.dpqsd)
-        sbp.grid(row = 1, column = 3, padx = 5, pady = 5)
+        sbp.grid(row = 1, column = 3, padx = 2, pady = 2)
         sbp.config(font = ('Helvetica' , 16))
 
         rLabel = Label(self.dpqt , text = "Resultado de la búsqueda: ")
-        rLabel.grid(row = 30 , column = 0 , padx = 0 , pady = 0)
+        rLabel.grid(row = 29 , column = 0 , padx = 0 , pady = 0)
         rLabel.config(bg = "light sea green" , font = ('Helvetica' , 16))
 
         dLabel = Label(self.dpqt , text = "Datos que se muestran (en orden): ")
         dLabel.grid(row = 28 , column = 0 , padx = 5 , pady = 5)
         dLabel.config(bg = "light sea green" , font = ('Helvetica' , 16) , wraplength = 200)
 
-        resLabel = Label(self.dpqt , text = "ID , potenciómetro digital , RPMs , diferencia de voltaje , voltaje")
+        resLabel = Label(self.dpqt , text = "ID , potenciómetro digital , RPMs , diferencia de voltaje , voltaje, tiempo")
         resLabel.grid(row = 28 , column = 1 , padx = 5 , pady = 1)
         resLabel.config(bg = "light sea green" , font = ('Helvetica' , 16))
 
 
-        vLabel = Label(self.dpqt , textvariable = self.resultado)
-        vLabel.grid(row = 30 , column = 1 , padx = 0, pady = 50)
-        vLabel.config(bg = "light sea green"  , font = ('Helvetica' , 16) , wraplength = 220)
+        vLabel = Label(self.dpqt , textvariable = self.resultado) #, yscrollcommand = scb.set)
+        vLabel.grid(row = 29 , column = 1 , padx = 0, pady = 50)
+        vLabel.config(bg = "light sea green"  , font = ('Helvetica' , 16) , wraplength = 400)
 
         ccLabel = Label(self.dpqt , text = "Número de coincidencias: ")
         ccLabel.grid(row = 28 , column = 3 , padx = 5 , pady = 5)
         ccLabel.config(bg = "light sea green"  , font = ('Helvetica' , 16) , wraplength = 150)
 
         cLabel = Label(self.dpqt , textvariable = self.dato)
-        cLabel.grid(row = 28 , column = 6)
+        cLabel.grid(row = 28 , column = 4)
         cLabel.config(bg = "light sea green"  , font = ('Helvetica' , 16))
 
         exit_Button = Button(self.dpqt , text = 'Exit' , command = self.root.destroy) 
-        exit_Button.grid(row = 30 , column = 11 , padx = 10 , pady = 10)
+        exit_Button.grid(row = 30 , column = 9 , padx = 5 , pady = 5)
         exit_Button.config(font = ('Helvetica' , 16))
 
         bm_Button = Button(self.dpqt , text = 'Back' , command = self.dpqt.destroy)
-        bm_Button.grid(row = 30 , column = 10 , padx = 10 , pady = 10)
+        bm_Button.grid(row = 30 , column = 8 , padx = 5 , pady = 5)
         bm_Button.config(font = ('Helvetica' , 16))
 
         nq_Button = Button(self.dpqt , text = 'New' , command = self.newq)
-        nq_Button.grid(row = 30 , column = 9 , padx = 10 , pady = 10)
+        nq_Button.grid(row = 30 , column = 7 , padx = 5 , pady = 5)
         nq_Button.config(font = ('Helvetica' , 16))
 
     def vsd(self):
