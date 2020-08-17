@@ -45,6 +45,8 @@ unsigned int rpm;
 
 unsigned long passedtime;
 
+unsigned long it = 0;
+
 //Counter
 void isr()
 
@@ -90,33 +92,11 @@ void setup(void)
  
 void loop(void) 
 {
-  //Serial.println("Ready");
+  
   DP();
-      
-  if(Serial.available()>0)
-  {
-    
-    estado=Serial.read();
-    
-    if(estado=='N')
-    {
-      
-      digitalWrite(foco,LOW);
-      
-    }
-    
-    else if(estado=='Y')
-    {
-      
-      digitalWrite(foco,HIGH);
-      
-    }
-
-  }
-    //}
-  //}
   
 }
+
 
 
 void DP()
@@ -125,12 +105,15 @@ void DP()
   //Potenciometro digital
   //Serial.println("\t\t\t Potenciometro Digital");  
 
-  for (int i=0; i<1023; i++) {
+  for (int i=0; i<=1023; i++) {
+    
+    unsigned long nt = millis();
+    digitalWrite(foco,LOW);
     //0,1023
     //Serial.print("Aumentando, i = ");
     //Serial.print("ValDP: ");
-    Serial.print(i, DEC);
-    pot.increase(1);
+    Serial.println(i, DEC);
+    pot.increase(i);//1);
     //Serial.print(",");
     //Efecto Hall
     delay(999);//Update RPM every second
@@ -139,6 +122,16 @@ void DP()
   
     //rpm = 60*contador;
     rpm = 60*counter;
+    
+    if (rpm != 0)
+    {
+      
+      digitalWrite(foco,HIGH);
+      delay(1000);
+      digitalWrite(foco,LOW);
+      
+    }
+    
     
     passedtime = millis();
     
@@ -172,55 +165,12 @@ void DP()
     //Delay del DP
     delay(1000);
     //Serial.println();
+    
+    unsigned long ts = nt - it;
+    unsigned long tt = (ts*0.001);
+    //Serial.println("Time: ");
+    Serial.println(tt);
+    
   }
 
-  for (int i=0; i<1023; i++) {
-   // Serial.print("ValDP:");
-//Serial.print("Disminuyendo, i = ");
-
-    Serial.println(i, DEC);
-    pot.decrease(1);
-    
-    //Serial.print(",");
-    //Efecto Hall
-    delay(999);//Update RPM every second
-    
-    detachInterrupt(0); //Interrupts are disabled
-  
-    //rpm = 60*contador;
-    rpm = 60*counter;
-    
-    passedtime = millis();
-    
-    //contador = 0;
-    counter = 0;
-    //Serial.print("RPM= ");
-    
-    Serial.println(rpm); //Print out result to monitor
-    
-    attachInterrupt(0, isr, RISING);   //Restart the interrupt processing
-    //Serial.print(",");
-    
-    delay(1000);
-    
-    // Obtiene datos del pin A0 del ADS1115 y los imprime
-    //short adc0 = ads.readADC_SingleEnded(0);
-    //Serial.print("ADS: "); 
-    //Serial.println(adc0);
-
-    short diferencia_0_1 = ads.readADC_Differential_0_1();
-    float volts = (diferencia_0_1 * factorEscala)/1000.0;
-    //Serial.print("Diferencia 0-1");    
-    Serial.println(diferencia_0_1);
-    //Serial.print("Voltaje: ");
-    Serial.println(volts,4);
- 
-    //delay(1000);
-
-    //Serial.print(",");
-    //Delay del DP
-    
-    delay(1000);
-    //Serial.println();
-  }
 }
