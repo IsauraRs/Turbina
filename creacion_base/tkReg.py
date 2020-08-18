@@ -95,12 +95,12 @@ class Menu():
 
         self.dpt = str(self.dpp.get())
 
-        c.vista(str(self.dpt))
+        a = c.vista(str(self.dpt))
 
-        self.resultado.set(dl)
-        print(dl)
+        self.resultado.set(a[1])
+        #print(dl)
 
-        self.dato.set(cd)
+        self.dato.set(a[0])
 
 
 
@@ -111,17 +111,17 @@ class Menu():
             #dpven.delete(0 , 'end')
             self.dato.set("")
             self.resultado.set("")
-            self.dpt.set('')
-            self.dpp.set('')
+            #self.dpt.set('')
+            #self.dpp.set('')
             dpven.delete("0" , "end")
             self.dpt = str(self.dpp.get())
 
-            c.vista(str(self.dpt))
+            a = c.vista(str(self.dpt))
 
-            self.resultado.set(dl)
-            print(dl)
+            self.resultado.set(a[1])
+            #print(dl)
 
-            self.dato.set(cd)
+            self.dato.set(a[0])
 
             #vLabel.set(0)
             #self.dpp.set("")
@@ -155,11 +155,11 @@ class Menu():
         dpven.config(textvariable = self.dpp , font = ('Helvetica' , 16))
         dpven.grid(row = 1 , column = 2 , padx = 5 , pady = 5)
         
-        sbp = Button(self.dpqt , text = 'Buscar', command = self.dpqsd)
+        sbp = Button(self.dpqt , text = 'Search', command = self.dpqsd)
         sbp.grid(row = 1, column = 3, padx = 2, pady = 2)
         sbp.config(font = ('Helvetica' , 16))
 
-        rLabel = Label(self.dpqt , text = "Resultado de la búsqueda: ")
+        rLabel = Label(self.dpqt , text = "Search results: ")
         rLabel.grid(row = 29 , column = 0 , padx = 0 , pady = 0)
         rLabel.config(bg = "light sea green" , font = ('Helvetica' , 16))
 
@@ -172,7 +172,7 @@ class Menu():
         resLabel.config(bg = "light sea green" , font = ('Helvetica' , 16))
 
 
-        vLabel = Label(self.dpqt , textvariable = self.resultado) #, yscrollcommand = scb.set)
+        vLabel = Label(self.dpqt , textvariable = self.resultado)
         vLabel.grid(row = 29 , column = 1 , padx = 0, pady = 50)
         vLabel.config(bg = "light sea green"  , font = ('Helvetica' , 16) , wraplength = 400)
 
@@ -199,6 +199,10 @@ class Menu():
     def vsd(self):
 
         self.vvt = str(self.vv.get())
+        
+        c.vista(str(self.vvt))
+
+        self.voltajer.set(vl)
 
 
     def volt(self):
@@ -206,17 +210,33 @@ class Menu():
         self.vtp = Toplevel()
         self.vtp.title("Search by voltage")
         self.vv = StringVar()
+        self.vtp.config(bg = "light sea green")
 
         self.imC1 = PhotoImage(file = "logocemieo.png")#"image317.png") 
-        self.imag11 = Label(self.dpqt , image = self.imC1)
+        self.imag11 = Label(self.vtp , image = self.imC1)
         self.imag11.grid(row = 0 , column = 0 , padx =  0, pady = 0) 
         self.imag11.config(bg = "light sea green")
 
         self.imi = PhotoImage(file = "image72.png")
-        self.imag2 = Label(self.dpqt , image = self.imi)
+        self.imag2 = Label(self.vtp , image = self.imi)
         self.imag2.grid(row = 0 , column = 90 , padx = 0, pady = 0) 
         self.imag2.config(bg = "light sea green")
+
+        vvLabel = Label(self.vtp , text = "Value: ")
+        vvLabel.grid(row = 1, column = 1 , padx = 0, pady = 5)
+        vvLabel.config(bg = "light sea green" , font = ('Helvetica' , 16))
         
+        vven = Entry(self.vtp)
+        vven.config(textvariable = self.vv , font = ('Helvetica' , 16))
+        vven.grid(row = 1 , column = 2 , padx = 5 , pady = 5)
+
+        sbb = Button(self.vtp , text = 'Search' , command = self.vsd)
+        sbb.grid(row = 1, column = 3, padx = 2, pady = 2)
+        sbb.config(font = ('Helvetica' , 16))
+
+        rvLabel = Label(self.vtp , text = "Search results: ")
+        rvLabel.grid(row = 29 , column = 0 , padx = 0 , pady = 0)
+        rvLabel.config(bg = "light sea green" , font = ('Helvetica' , 16))
 
     def consulta(self):
 
