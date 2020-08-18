@@ -2,13 +2,6 @@ import psycopg2
 from tkReg import *
 import tkReg as w
 
-
-dl = []
-cd = []
-
-vl = []
-vlc = []
-
 host = 'ec2-34-225-82-212.compute-1.amazonaws.com'
 
 database= 'd60lbn7ubp9jlb'
@@ -16,6 +9,10 @@ user= 'kgsvsidlipqnoy'
 password='3e3c54e483c6797261dad22ef4735c24fa2b8df1fc993252f572bb1618019073'
 
 def vista(dpVal):
+    
+    dl = []
+    cd = []
+
     conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
     cursor = conexion.cursor()
     #cursor.execute("SELECT * FROM lectura;")
@@ -44,6 +41,10 @@ def vista(dpVal):
     return lisn
 
 def vistavolt(voltVal):
+
+    vl = []
+    vlc = []
+    
     conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
     cursor = conexion.cursor()
     #cursor.execute("SELECT * FROM lectura;")
