@@ -1,6 +1,7 @@
 #Receives data from serial port, saves them into the list "arduino_lectures" and prints them
 import serial
 from tkReg import *
+from serial import Serial
 import Models1 as conex
 
 
