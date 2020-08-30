@@ -1,14 +1,16 @@
 from tkinter import *
 from tkinter import messagebox, ttk
 from PIL import Image 
+import threading
+import serial
+import time
 
-#from datos_Serial import *
-#import datos_Serial as datap
+from datos_Serial import *
+import datos_Serial as datap
 
 from view import *
 import view as c
 
-nnl = []
 
 class Menu():
 
@@ -24,6 +26,9 @@ class Menu():
         self.dato = StringVar()
         self.voltajer = StringVar()
         self.volset = StringVar()
+        self.rpmr = StringVar()
+        self.rpmset = StringVar()
+        self.ardat = StringVar()
         
         #Imágenes1
         imC = PhotoImage(file = "logocemieo.png") #"image317.png") 
@@ -50,17 +55,27 @@ class Menu():
         #place(x = 400 , y = 210) #grid(row = 4 , column  = 80 , padx = 0 , pady = 0)
         query_Button.config(font = ('Helvetica' , 16))
 
-        exit_Button = Button(self.root , text = 'Exit' , command = self.root.destroy , height = 8 , width = 16)#.pack()
+        def meb():
+    
+            arduino.close()
+            self.root.destroy()
+
+        exit_Button = Button(self.root , text = 'Exit' , command = meb , height = 8 , width = 16)#.pack()
         exit_Button.grid(row = 6 , column = 10 , padx = 5 , pady = 5)
         #place(x = 400 , y = 410) #grid(row = 8 , column = 80 , padx = 0 , pady = 0)
         exit_Button.config(font = ('Helvetica' , 16))
 
         self.root.mainloop()
 
-    def t1(self):
+    #def t1(self):
 
-        self.datk.set(nl)
-        print(nl)
+        #self.datk.set(nl)
+        #print(nl)
+    def endTest(self):
+
+        arduino.close()
+        self.root.destroy()
+    
     
     def inicio(self):
 
@@ -74,23 +89,45 @@ class Menu():
         #self.datk.set(nl)
 
         runningLabel = Label(self.bgn , text = "Reading data")
-        runningLabel.grid(row = 1, column = 5, padx = 10, pady = 10)
-        runningLabel.config(font = ('Helvetica' , 16))
+        runningLabel.grid(row = 1 , column = 5 , padx = 10 , pady = 10)
+        runningLabel.config(bg = "light sea green"  , font = ('Helvetica' , 16))
 
-        exit_Button = Button(self.bgn , text = 'Exit' , command = self.root.destroy) #, height = 10 , width = 20)
+        exit_Button = Button(self.bgn , text = 'Exit' , command = self.endTest) #, height = 10 , width = 20)
         exit_Button.grid(row = 4 , column = 5 , padx = 10 , pady = 10)
         exit_Button.config(font = ('Helvetica' , 16))
 
-        bm_Button = Button(self.bgn , text = 'Back' , command = self.bgn.destroy)
+        def backt():
+            arduino.close()
+            self.bgn.destroy()
+
+        bm_Button = Button(self.bgn , text = 'Back' , command = backt)
         bm_Button.grid(row = 4 , column = 10 , padx = 10 , pady = 10)
         bm_Button.config(font = ('Helvetica' , 16))
+
+        dtLabel = Label(self.bgn , textvariable = self.datk)
+        dtLabel.grid(row = 10 , column = 1 )
+        dtLabel.config(bg = "light sea green"  , font = ('Helvetica' , 16) , wraplength = 400)
+
+        self.scrollbar = Scrollbar(self.bgn)
+
+        self.log = Text( self.bgn, width=30, height=30, takefocus=0)
+        self.log.grid(row = 9 , column = 4)
+        self.log.config(yscrollcommand=self.scrollbar.set)
+        self.scrollbar.config(command=self.log.yview)
+
+        print(vfl)
+        self.log.insert(END, vfl)
+        time.sleep(5)
         
-        #datap.testc()
-        #for j in range(len(nl)):
-         #   self.datk.set(nl)
-        #a = datap.testc()
+        #self.datk.set()
+
+        threadFunc = threading.Thread(target = testc)
+        threadFunc.start()
+
         
-    
+        #self.ardat.set(self.sdar)
+
+        
     def dpqsd(self):
 
         self.dpt = str(self.dpp.get())
@@ -102,30 +139,6 @@ class Menu():
 
         self.dato.set(a[0])
 
-
-
-    def newq(self):
-    
-            #self.dpven.delete(0,'END')
-            #vLabel.delete('0' , 'END')
-            #dpven.delete(0 , 'end')
-            self.dato.set("")
-            self.resultado.set("")
-            #self.dpt.set('')
-            #self.dpp.set('')
-            dpven.delete("0" , "end")
-            self.dpt = str(self.dpp.get())
-
-            a = c.vista(str(self.dpt))
-
-            self.resultado.set(a[1])
-            #print(dl)
-
-            self.dato.set(a[0])
-
-            #vLabel.set(0)
-            #self.dpp.set("")
-            #sself.dpqsd()
 
     def dpq(self):
 
@@ -147,7 +160,7 @@ class Menu():
         self.imag2.grid(row = 0 , column = 8 , padx = 0, pady = 0) 
         self.imag2.config(bg = "light sea green")    
 
-        dpvLabel = Label(self.dpqt , text = "Valor: ")
+        dpvLabel = Label(self.dpqt , text = "Value: ")
         dpvLabel.grid(row = 1, column = 1 , padx = 0, pady = 5)
         dpvLabel.config(bg = "light sea green" , font = ('Helvetica' , 16))
 
@@ -163,11 +176,11 @@ class Menu():
         rLabel.grid(row = 29 , column = 0 , padx = 0 , pady = 0)
         rLabel.config(bg = "light sea green" , font = ('Helvetica' , 16))
 
-        dLabel = Label(self.dpqt , text = "Datos que se muestran (en orden): ")
+        dLabel = Label(self.dpqt , text = "Displayed data (in order): ")
         dLabel.grid(row = 28 , column = 0 , padx = 5 , pady = 5)
         dLabel.config(bg = "light sea green" , font = ('Helvetica' , 16) , wraplength = 200)
 
-        resLabel = Label(self.dpqt , text = "ID , potenciómetro digital , RPMs , diferencia de voltaje , voltaje, tiempo")
+        resLabel = Label(self.dpqt , text = "ID , digital potentiometer , RPM , voltage difference , voltage, time")
         resLabel.grid(row = 28 , column = 1 , padx = 5 , pady = 1)
         resLabel.config(bg = "light sea green" , font = ('Helvetica' , 16))
 
@@ -176,7 +189,7 @@ class Menu():
         vLabel.grid(row = 29 , column = 1 , padx = 0, pady = 50)
         vLabel.config(bg = "light sea green"  , font = ('Helvetica' , 16) , wraplength = 400)
 
-        ccLabel = Label(self.dpqt , text = "Número de coincidencias: ")
+        ccLabel = Label(self.dpqt , text = "Number of matches: ")
         ccLabel.grid(row = 28 , column = 3 , padx = 5 , pady = 5)
         ccLabel.config(bg = "light sea green"  , font = ('Helvetica' , 16) , wraplength = 150)
 
@@ -188,22 +201,36 @@ class Menu():
         exit_Button.grid(row = 30 , column = 9 , padx = 5 , pady = 5)
         exit_Button.config(font = ('Helvetica' , 16))
 
-        bm_Button = Button(self.dpqt , text = 'Back' , command = self.dpqt.destroy)
+        def back1():
+            self.dato.set("")
+            self.resultado.set("")
+            dpven.delete("0" , "end")
+            self.dpqt.destroy()
+
+        bm_Button = Button(self.dpqt , text = 'Back' , command = back1)
         bm_Button.grid(row = 30 , column = 8 , padx = 5 , pady = 5)
         bm_Button.config(font = ('Helvetica' , 16))
 
-        nq_Button = Button(self.dpqt , text = 'New' , command = self.newq)
+        def newq():
+            
+            self.dato.set("")
+            self.resultado.set("")
+            dpven.delete("0" , "end")
+
+        nq_Button = Button(self.dpqt , text = 'New' , command = newq)
         nq_Button.grid(row = 30 , column = 7 , padx = 5 , pady = 5)
         nq_Button.config(font = ('Helvetica' , 16))
 
+        
     def vsd(self):
 
         self.vvt = str(self.vv.get())
         
-        c.vista(str(self.vvt))
+        b = c.vistavolt(str(self.vvt))
 
-        self.voltajer.set(vl)
+        self.voltajer.set(b[0])
 
+        self.volset.set(b[1])
 
     def volt(self):
 
@@ -212,6 +239,7 @@ class Menu():
         self.vv = StringVar()
         self.vtp.config(bg = "light sea green")
 
+        #Imágenes
         self.imC1 = PhotoImage(file = "logocemieo.png")#"image317.png") 
         self.imag11 = Label(self.vtp , image = self.imC1)
         self.imag11.grid(row = 0 , column = 0 , padx =  0, pady = 0) 
@@ -237,6 +265,138 @@ class Menu():
         rvLabel = Label(self.vtp , text = "Search results: ")
         rvLabel.grid(row = 29 , column = 0 , padx = 0 , pady = 0)
         rvLabel.config(bg = "light sea green" , font = ('Helvetica' , 16))
+
+        dvLabel = Label(self.vtp , text = "Displayed data (in order): ")
+        dvLabel.grid(row = 28 , column = 0 , padx = 5 , pady = 5)
+        dvLabel.config(bg = "light sea green" , font = ('Helvetica' , 16) , wraplength = 200)
+
+        resvLabel = Label(self.vtp , text = "ID , digital potentiometer , RPM , voltage difference , voltage, time")
+        resvLabel.grid(row = 28 , column = 1 , padx = 5 , pady = 1)
+        resvLabel.config(bg = "light sea green" , font = ('Helvetica' , 16))
+
+        Labeln = Label(self.vtp , textvariable = self.voltajer)
+        Labeln.grid(row = 29 , column = 1 , padx = 0, pady = 50)
+        Labeln.config(bg = "light sea green"  , font = ('Helvetica' , 16) , wraplength = 400)
+
+        cvLabel = Label(self.vtp , text = "Number of matches: ")
+        cvLabel.grid(row = 28 , column = 3 , padx = 5 , pady = 5)
+        cvLabel.config(bg = "light sea green"  , font = ('Helvetica' , 16) , wraplength = 150)
+
+        crLabel = Label(self.vtp , textvariable = self.volset)
+        crLabel.grid(row = 28 , column = 4)
+        crLabel.config(bg = "light sea green"  , font = ('Helvetica' , 16))
+
+        exit_Button = Button(self.vtp , text = 'Exit' , command = self.root.destroy) 
+        exit_Button.grid(row = 30 , column = 9 , padx = 5 , pady = 5)
+        exit_Button.config(font = ('Helvetica' , 16))
+
+        def back2():
+            self.voltajer.set("")
+            self.volset.set("")
+            vven.delete("0" , "end")
+            self.vtp.destroy()
+
+        bm_Button = Button(self.vtp , text = 'Back' , command = back2)
+        bm_Button.grid(row = 30 , column = 8 , padx = 5 , pady = 5)
+        bm_Button.config(font = ('Helvetica' , 16))
+
+        def newq2():
+            
+            self.volset.set("")
+            self.voltajer.set("")
+            vven.delete("0" , "end")
+
+        nq_Button = Button(self.vtp , text = 'New' , command = newq2)
+        nq_Button.grid(row = 30 , column = 7 , padx = 5 , pady = 5)
+        nq_Button.config(font = ('Helvetica' , 16))
+
+    def rsd(self):
+
+        self.rpmvf = str(self.rpmv.get())
+
+        d = c.vistarpm(str(self.rpmvf))
+
+        self.rpmr.set(d[0])
+
+        self.rpmset.set(d[1])
+
+    def rpm(self):
+
+        self.rpmt = Toplevel()
+        self.rpmt.title("RPM")
+        self.rpmv = StringVar()
+        self.rpmt.config(bg = "light sea green")
+
+        #Imágenes
+        self.imC1 = PhotoImage(file = "logocemieo.png")#"image317.png") 
+        self.imag11 = Label(self.rpmt , image = self.imC1)
+        self.imag11.grid(row = 0 , column = 0 , padx =  0, pady = 0) 
+        self.imag11.config(bg = "light sea green")
+
+        self.imi = PhotoImage(file = "image72.png")
+        self.imag2 = Label(self.rpmt , image = self.imi)
+        self.imag2.grid(row = 0 , column = 90 , padx = 0, pady = 0) 
+        self.imag2.config(bg = "light sea green")
+
+        rmLabel = Label(self.rpmt , text = "Value: ")
+        rmLabel.grid(row = 1, column = 1 , padx = 0, pady = 5)
+        rmLabel.config(bg = "light sea green" , font = ('Helvetica' , 16))
+
+        rpven = Entry(self.rpmt)
+        rpven.config(textvariable = self.rpmv , font = ('Helvetica' , 16))
+        rpven.grid(row = 1 , column = 2 , padx = 5 , pady = 5)
+
+        rsb = Button(self.rpmt , text = 'Search' , command = self.rsd)
+        rsb.grid(row = 1, column = 3, padx = 2, pady = 2)
+        rsb.config(font = ('Helvetica' , 16))
+
+        rrLabel = Label(self.rpmt , text = "Search results: ")
+        rrLabel.grid(row = 29 , column = 0 , padx = 0 , pady = 0)
+        rrLabel.config(bg = "light sea green" , font = ('Helvetica' , 16))
+
+        rdLabel = Label(self.rpmt , text = "Displayed data (in order): ")
+        rdLabel.grid(row = 28 , column = 0 , padx = 5 , pady = 5)
+        rdLabel.config(bg = "light sea green" , font = ('Helvetica' , 16) , wraplength = 200)
+
+        rresLabel = Label(self.rpmt , text = "ID , digital potentiometer , RPM , voltage difference , voltage, time")
+        rresLabel.grid(row = 28 , column = 1 , padx = 5 , pady = 1)
+        rresLabel.config(bg = "light sea green" , font = ('Helvetica' , 16))
+
+        rpLabel = Label(self.rpmt , textvariable = self.rpmr)
+        rpLabel.grid(row = 29 , column = 1 , padx = 0, pady = 50)
+        rpLabel.config(bg = "light sea green"  , font = ('Helvetica' , 16) , wraplength = 400)
+
+        ccrLabel = Label(self.rpmt , text = "Number of matches: ")
+        ccrLabel.grid(row = 28 , column = 3 , padx = 5 , pady = 5)
+        ccrLabel.config(bg = "light sea green"  , font = ('Helvetica' , 16) , wraplength = 150)
+
+        crLabel = Label(self.rpmt , textvariable = self.rpmset)
+        crLabel.grid(row = 28 , column = 4)
+        crLabel.config(bg = "light sea green"  , font = ('Helvetica' , 16))
+
+        exit_Button = Button(self.rpmt , text = 'Exit' , command = self.root.destroy)
+        exit_Button.grid(row = 30 , column = 9 , padx = 5 , pady = 5)
+        exit_Button.config(font = ('Helvetica' , 16))
+
+        def back3():
+            self.dato.set("")
+            self.resultado.set("")
+            dpven.delete("0" , "end")
+            self.dpqt.destroy()
+        
+        bm_Button = Button(self.rpmt , text = 'Back' , command = back3)
+        bm_Button.grid(row = 30 , column = 8 , padx = 5 , pady = 5)
+        bm_Button.config(font = ('Helvetica' , 16))
+
+        def newq3():
+            
+            self.dato.set("")
+            self.resultado.set("")
+            dpven.delete("0" , "end")
+        
+        nq_Button = Button(self.rpmt , text = 'New' , command = newq3)
+        nq_Button.grid(row = 30 , column = 7) # , padx = 5 , pady = 5)
+        nq_Button.config(font = ('Helvetica' , 16))
 
     def consulta(self):
 
@@ -267,6 +427,10 @@ class Menu():
         vB = Button(self.qry , text = 'Voltage' , command = self.volt)
         vB.grid(row = 3 , column = 10 , padx = 0 , pady = 10)
         vB.config(font = ('Helvetica' , 16))
+
+        rpmB =  Button(self.qry , text = 'RPM' , command = self.rpm)
+        rpmB.grid(row = 4 , column = 10 , padx = 0 , pady = 10)
+        rpmB.config(font = ('Helvetica' , 16))
 
         exit_Button = Button(self.qry , text = 'Exit' , command = self.root.destroy) 
         exit_Button.grid(row = 7000 , column = 10 , padx = 10 , pady = 10)

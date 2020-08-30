@@ -12,6 +12,7 @@ def vista(dpVal):
     
     dl = []
     cd = []
+    lisn = []
 
     conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
     cursor = conexion.cursor()
@@ -35,7 +36,6 @@ def vista(dpVal):
     conexion.commit()
     cursor.close()
     conexion.close()
-    lisn = []
     lisn.append(cd)
     lisn.append(dl)
     return lisn
@@ -44,10 +44,10 @@ def vistavolt(voltVal):
 
     vl = []
     vlc = []
+    ll = []
     
     conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
     cursor = conexion.cursor()
-    #cursor.execute("SELECT * FROM lectura;")
     cursor.execute("SELECT lectura_id, valor_pot_digt, rev_min, dif_01, voltaje, tiemp FROM lectura WHERE voltaje = %s" , (voltVal, ))
     vd = cursor.fetchall()
 
@@ -63,6 +63,54 @@ def vistavolt(voltVal):
     conexion.commit()
     cursor.close()
     conexion.close()
+    ll.append(vl)
+    ll.append(vlc)
+    return ll
 
+def vistarpm(rpmVal):
+
+    rpml = []
+    rpmcl = []
+    rpmfl = []
+
+    conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
+    cursor = conexion.cursor()
+    cursor.execute("SELECT lectura_id, valor_pot_digt, rev_min, dif_01, voltaje, tiemp FROM lectura WHERE rev_min = %s" , (rpmVal, ))
+    rd = cursor.fetchall()
+
+    for e in rd:
+        rpml.append(e)
+
+    cursor.execute("SELECT COUNT (*) FROM lectura WHERE rev_min = %s" , (rpmVal, ))
+    cdata2 = cursor.fetchall()
+
+    for q in cdata2:
+        rpmcl.append(q)
+    
+    conexion.commit()
+    cursor.close()
+    conexion.close()
+
+    rpmfl.append(rpml)
+    rpmfl.append(rpmcl)
+    return rpmfl
+
+def writeImage(siq):
+
+    imout = open('newim.png' , 'wb')
+    imout.write(siq)
+
+def vistagraph():
+
+    conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
+    cursor = conexion.cursor()
+    cursor.execute("SELECT grafica FROM efgraph")
+    siq = cursor.fetchone()[0]
+    writeImage(siq)
+
+    conexion.commit()
+    cursor.close()
+    conexion.close()
 
 #vista(str(570))
+vistagraph()
