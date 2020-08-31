@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="wnameth=device-wnameth, initial-scale=1.0">
+    <title>Búsqueda</title>
+</head>
+<body>
+    <div class="container">
+        <form action="/consulta/potdigital" method="POST">
+            Potenciómetro digital: <input type="text" name="pd"><br>
+            <button type="submit" name="action"> 
+                <i>Send</i>
+            </button>
+        </form>
+        <form action="/consulta/rpm" method="POST">
+            Revoluciones por minuto: <input type="text " name = "rpm"><br>
+            <button type="submit" name="action"> 
+                <i>Send</i>
+            </button>
+        </form>
+        <form action="/consulta/difv" method="POST">
+            Diferencial de voltaje: <input type="text" name="dv"><br>
+            <button type="submit" name="action"> 
+                <i>Send</i>
+            </button>
+        </form>
+        <form action="/consulta/volt" method="POST">
+            Voltaje: <input type="text" name="v"><br>
+            <button type="submit" name="action"> 
+                <i>Send</i>
+            </button>
+        </form>
+        
+        <form action="/consulta/tiempo" method="POST">
+            Tiempo: <input type="text" name = "t"><br>
+            <button type="submit" name="action"> 
+                <i>Send</i>
+            </button>
+        </form>
+    </div>
+</body>
+</html>
