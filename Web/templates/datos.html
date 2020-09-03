@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "layout.html" %} {% block content %}
     <meta http-equiv="refresh" content="3"> 
-    <title>Document</title>
-</head>
-<body>
-    <table>
+    <table class="table">
         <thead>
             <tr>
                 <th>Potenciómetro digital</th>
@@ -15,6 +8,8 @@
                 <th>Diferencial de voltaje</th>
                 <th>Voltaje</th>
                 <th>Tiempo</th>
+                <th>Voltaje Entregado</th>
+                <th>Diferencial de voltaje (entrada)</th>
             </tr>
         </thead>
         <tbody>
@@ -25,9 +20,24 @@
                 <td>{{ i.2 }}</td>
                 <td>{{ i.3 }}</td>
                 <td>{{ i.4 }}</td>
+                <td>{{ i.5 }}</td>
+                <td>{{ i.6 }}</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-</body>
-</html>
+    {% if not bandera %}
+    <a href="/graficarmostrar">Mostrar</a>
+    {% endif %}
+    {% if bandera %}
+    <div class="container">
+        <img src="{{ url_for('static' , filename = 'img/image.jpg') }}" alt="gráfica">
+        <form action="/Regresar" method="post">
+            Nombre del Reporte: <input type="text" name="nombre"><br>
+            <button type="submit" name="action"> 
+                <i>Send</i>
+            </button>
+        </form>
+    </div>
+    {% endif %}
+{% endblock %}

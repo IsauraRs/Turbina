@@ -1,0 +1,20 @@
+{% extends "layout.html" %} {% block content %}
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Fecha</th>
+                <th>Enviar a correo electrónico</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for i in datos %}
+                <td>{{ i.0 }}</td>
+                <td>{{ i.1 }}</td>
+                <td><a href="">Enviar</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,19 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
-</head>
-<body>
-    <div>
-        <h1>Inicio</h1>
-        <div class="container">
-            <a href="/EncendidoArduino">Begin test</a> <br>
-            <a href="/Ruta">Query</a> <br>
-            <a href="">Exit</a> <br>
-
-        </div>
+{% extends "layout.html" %} {% block content %}
+<br>
+<br>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4">Sistema de adquisición de datos para turbina helicoidal</h1>
+            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+            <hr class="my-4">
+            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+            <div class="row">
+                <div class="col s6">
+                    <a type="button" href="/EncendidoArduino" class="btn btn-outline-success">Begin test</a><br>
+                </div>
+                <div class="col s6">
+                    <a type="button" href="/Ruta" class="btn btn-outline-danger">Query</a><br>
+                </div>
+                <a type="button" href="/Reportes" class="btn btn-outline-primary">Ver reportes</a><br>
+                <a type="button" href="" class="btn btn-outline-warning">Exit</a><br>
+            </div>
+          </div>
     </div>
-</body>
-</html>
+{% endblock %}

@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="wnameth=device-wnameth, initial-scale=1.0">
-    <title>Búsqueda</title>
-</head>
-<body>
-    <div class="container">
+{% extends "layout.html" %} {% block content %}    <div class="container">
         <form action="/consulta/potdigital" method="POST">
             Potenciómetro digital: <input type="text" name="pd"><br>
             <button type="submit" name="action"> 
@@ -39,5 +31,125 @@
             </button>
         </form>
     </div>
-</body>
-</html>
+    {% if bandera=="1" %}
+    <table>
+        <thead>
+            <tr>
+                <th>Potenciómetro digital</th>
+                <th>Revoluciones por minuto</th>
+                <th>Diferencial de voltaje</th>
+                <th>Voltaje</th>
+                <th>Tiempo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for i in datos %}
+                <td>{{ i.1 }}</td>
+                <td>{{ i.2 }}</td>
+                <td>{{ i.3 }}</td>
+                <td>{{ i.4 }}</td>
+                <td>{{ i.5 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+    {% if bandera=="2" %}
+    <table>
+        <thead>
+            <tr>
+                <th>Potenciómetro digital</th>
+                <th>Revoluciones por minuto</th>
+                <th>Diferencial de voltaje</th>
+                <th>Voltaje</th>
+                <th>Tiempo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for j in datos %}
+                <td>{{ j.1 }}</td>
+                <td>{{ j.2 }}</td>
+                <td>{{ j.3 }}</td>
+                <td>{{ j.4 }}</td>
+                <td>{{ j.5 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+    {% if bandera=="3" %}
+    {{ datos }}
+    <table>
+        <thead>
+            <tr>
+                <th>Potenciómetro digital</th>
+                <th>Revoluciones por minuto</th>
+                <th>Diferencial de voltaje</th>
+                <th>Voltaje</th>
+                <th>Tiempo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for k in datos %}
+                <td>{{ k.1 }}</td>
+                <td>{{ k.2 }}</td>
+                <td>{{ k.3 }}</td>
+                <td>{{ k.4 }}</td>
+                <td>{{ k.5 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+    {% if bandera=="4" %}
+    <table>
+        <thead>
+            <tr>
+                <th>Potenciómetro digital</th>
+                <th>Revoluciones por minuto</th>
+                <th>Diferencial de voltaje</th>
+                <th>Voltaje</th>
+                <th>Tiempo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for i in datos %}
+                <td>{{ i.1 }}</td>
+                <td>{{ i.2 }}</td>
+                <td>{{ i.3 }}</td>
+                <td>{{ i.4 }}</td>
+                <td>{{ i.5 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+    {% if bandera=="5" %}
+    <table>
+        <thead>
+            <tr>
+                <th>Potenciómetro digital</th>
+                <th>Revoluciones por minuto</th>
+                <th>Diferencial de voltaje</th>
+                <th>Voltaje</th>
+                <th>Tiempo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for i in datos %}
+                <td>{{ i.1 }}</td>
+                <td>{{ i.2 }}</td>
+                <td>{{ i.3 }}</td>
+                <td>{{ i.4 }}</td>
+                <td>{{ i.5 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+{% endblock %}
