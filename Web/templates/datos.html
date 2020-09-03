@@ -27,14 +27,14 @@
         </tbody>
     </table>
     {% if not bandera %}
-    <a href="/graficarmostrar">Mostrar</a>
+    <a type="button" href="/graficarmostrar" class="btn btn-outline-secondary btn-lg">Mostrar</a><br>
     {% endif %}
     {% if bandera %}
     <div class="container">
         <img src="{{ url_for('static' , filename = 'img/image.jpg') }}" alt="gráfica">
         <form action="/Regresar" method="post">
             Nombre del Reporte: <input type="text" name="nombre"><br>
-            <button type="submit" name="action"> 
+            <button type="submit" class="btn btn-outline-primary btn-lg" name="action"> 
                 <i>Send</i>
             </button>
         </form>
