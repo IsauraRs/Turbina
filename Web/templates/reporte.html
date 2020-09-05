@@ -12,7 +12,13 @@
                 {% for i in datos %}
                 <td>{{ i.0 }}</td>
                 <td>{{ i.1 }}</td>
-                <td><a type = "button" href="" class="btn btn-outline-danger btn-lg">Enviar</a><br></td>
+                <td> <form action="/EnviarReporte/{{ i.2 }}" method="POST">
+                    Correo Electrónico: <input type="text" name = "correo" placeholder="Correo electrónico">
+                    <button type="submit" class="btn btn-outline-info" name="action">
+                        <i>Send</i>
+                    </button>
+                </form>
+                </td>
             </tr>
             {% endfor %}
         </tbody>

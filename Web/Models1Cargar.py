@@ -15,9 +15,21 @@ def carga(param2, param3, param4, param5, param6, param7, param8):
     conexion.close()
 
 def readIm():
-    imm = open("image.jpg" , "rb")
+    imm = open("static/img/image.jpg" , "rb")
     imag = imm.read()
     return imag
+
+def readIm2():
+    imm = open("static/img/imageEfmotor.jpg" , "rb")
+    imag2 = imm.read()
+    return imag2
+
+def readIm3():
+    imm = open("static/img/imageEfTurbina.jpg" , "rb")
+    imag3 = imm.read()
+    return imag3
+
+
 
 def imCarga():
 
@@ -25,7 +37,11 @@ def imCarga():
     cursor = conexion.cursor()
     iml = readIm()
     binary = psycopg2.Binary(iml)
-    cursor.execute("INSERT INTO efgraph(grafica) VALUES (%s);",(binary, ))
+    iml2 = readIm2()
+    binary2 = psycopg2.Binary(iml2)
+    iml3 = readIm3()
+    binary3 = psycopg2.Binary(iml3)
+    cursor.execute("INSERT INTO efgraph(grafica , grafica2, grafica3) VALUES (%s, %s, %s);",(binary,binary2,binary3 ))
     conexion.commit()
     cursor.close()
     conexion.close()

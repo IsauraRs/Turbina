@@ -1,15 +1,15 @@
 {% extends "layout.html" %} {% block content %}
     <meta http-equiv="refresh" content="3"> 
-    <table class="table">
+    <table class="table table-bordered">
         <thead>
-            <tr>
+            <tr class="bg-danger">
                 <th>Potenciómetro digital</th>
                 <th>Revoluciones por minuto</th>
-                <th>Diferencial de voltaje</th>
-                <th>Voltaje</th>
+                <th>Diferencial de voltaje (out)</th>
+                <th>Voltaje (out)</th>
+                <th>Diferencial de voltaje (in)</th>
+                <th>Voltaje (in)</th>
                 <th>Tiempo</th>
-                <th>Voltaje Entregado</th>
-                <th>Diferencial de voltaje (entrada)</th>
             </tr>
         </thead>
         <tbody>
@@ -32,8 +32,17 @@
     {% if bandera %}
     <div class="container">
         <img src="{{ url_for('static' , filename = 'img/image.jpg') }}" alt="gráfica">
+        <img src="{{ url_for('static' , filename = 'img/imageEfmotor.jpg') }}" alt="gráfica">
+        <img src="{{ url_for('static' , filename = 'img/imageEfTurbina.jpg') }}" alt="gráfica">
         <form action="/Regresar" method="post">
-            Nombre del Reporte: <input type="text" name="nombre"><br>
+            <div class="form-row align-items-center">
+                <div class="col-auto">
+                  <label class="sr-only" for="inlineFormInput">Name</label>
+                  Nombre del Reporte: <input type="text" name="nombre" placeholder="Asigne un Nombre al Reporte"><br>
+                  Correo electrónico: <input type="text" name="correo" placeholder="Escriba su correo electrónico"><br>
+                </div>
+                </div>
+            <!--Nombre del Reporte: <input type="text" name="nombre" placeholder="Asigne un Nombre al Reporte"><br>-->
             <button type="submit" class="btn btn-outline-primary btn-lg" name="action"> 
                 <i>Send</i>
             </button>

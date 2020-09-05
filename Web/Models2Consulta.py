@@ -16,7 +16,7 @@ def vista(dpVal):
     conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
     cursor = conexion.cursor()
     #cursor.execute("SELECT * FROM lectura;")
-    cursor.execute("SELECT valor_pot_digt, rev_min, dif_01, voltaje, tiemp, voltajein, dif_23 FROM lectura WHERE valor_pot_digt = %s" , (dpVal, ))
+    cursor.execute("SELECT valor_pot_digt, rev_min, dif_01, voltaje, dif_23, voltajein, tiemp FROM lectura WHERE valor_pot_digt = %s" , (dpVal, ))
     #("SELECT valor_pot_digt FROM lectura WHERE valor_pot_digt = %s", (dpVal,))
     datos = cursor.fetchall()
 
@@ -47,7 +47,7 @@ def vistavolt(voltVal):
     
     conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
     cursor = conexion.cursor()
-    cursor.execute("SELECT lectura_id, valor_pot_digt, rev_min, dif_01, voltaje, tiemp FROM lectura WHERE voltaje = %s" , (voltVal, ))
+    cursor.execute("SELECT valor_pot_digt, rev_min, dif_01, voltaje, dif_23, voltajein, tiemp FROM lectura WHERE voltaje = %s" , (voltVal, ))
     vd = cursor.fetchall()
 
     for u in vd:
@@ -74,7 +74,7 @@ def vistadifvolt(difVoltVal):
 
     conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
     cursor = conexion.cursor()
-    cursor.execute("SELECT lectura_id, valor_pot_digt, rev_min, dif_01, voltaje, tiemp FROM lectura WHERE dif_01 = %s" , (difVoltVal, ))
+    cursor.execute("SELECT valor_pot_digt, rev_min, dif_01, voltaje, dif_23, voltajein, tiemp FROM lectura WHERE dif_01 = %s" , (difVoltVal, ))
     vf = cursor.fetchall()
 
     for e in vf:
@@ -105,7 +105,7 @@ def vistarpm(rpmVal):
 
     conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
     cursor = conexion.cursor()
-    cursor.execute("SELECT lectura_id, valor_pot_digt, rev_min, dif_01, voltaje, tiemp FROM lectura WHERE rev_min = %s" , (rpmVal, ))
+    cursor.execute("SELECT valor_pot_digt, rev_min, dif_01, voltaje, dif_23, voltajein, tiemp FROM lectura WHERE rev_min = %s" , (rpmVal, ))
     rd = cursor.fetchall()
 
     for e in rd:
@@ -133,7 +133,7 @@ def vistaTiempo(tiempoVal):
 
     conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
     cursor = conexion.cursor()
-    cursor.execute("SELECT lectura_id, valor_pot_digt, rev_min, dif_01, voltaje, tiemp FROM lectura WHERE tiemp = %s" , (tiempoVal, ))
+    cursor.execute("SELECT valor_pot_digt, rev_min, dif_01, voltaje, dif_23, voltajein, tiemp FROM lectura WHERE tiemp = %s" , (tiempoVal, ))
     x = cursor.fetchall()
 
     for t in x:
@@ -153,16 +153,73 @@ def vistaTiempo(tiempoVal):
     #print(timeFinalList[0])
     return timeFinalList
 
-def writeImage(siq):
+def vistadifvoltin(difv2):
 
-    imout = open('newim.png' , 'wb')
-    imout.write(siq)
-
-def vistagraph():
+    difVolt23l = []
+    difVolt23c = []
+    difVolt23fl = []
 
     conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
     cursor = conexion.cursor()
-    cursor.execute("SELECT grafica FROM efgraph")
+    cursor.execute("SELECT valor_pot_digt, rev_min, dif_01, voltaje, dif_23, voltajein, tiemp  FROM lectura WHERE dif_23 = %s" , (difv2, ))
+    d23 = cursor.fetchall()
+
+    for z in d23:
+        difVolt23l.append(z)
+    
+    cursor.execute("SELECT COUNT (*) FROM lectura WHERE  dif_23 = %s" , (difv2, ))
+    dvc = cursor.fetchall()
+
+    for y in dvc:
+        difVolt23c.append(y)
+    
+    conexion.commit()
+    cursor.close()
+    conexion.close()
+    difVolt23fl.append(difVolt23l)
+    difVolt23fl.append(difVolt23c)
+    
+    return difVolt23fl
+
+def vistaVoltin(vinVal):
+
+    voltinl = []
+    voltinc = []
+    voltinfl = []
+
+    conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
+    cursor = conexion.cursor()
+    cursor.execute("SELECT valor_pot_digt, rev_min, dif_01, voltaje, dif_23, voltajein, tiemp  FROM lectura WHERE voltajein = %s" , (vinVal, ))
+    vinf = cursor.fetchall()
+
+    for h in vinf:
+        voltinl.append(h)
+
+    cursor.execute("SELECT COUNT (*) FROM lectura WHERE  voltajein = %s" , (vinVal, ))
+    vcf = cursor.fetchall()
+
+    for r in vcf:
+        voltinc.append(r)
+    
+    conexion.commit()
+    cursor.close()
+    conexion.close()
+    voltinfl.append(voltinl)
+    voltinfl.append(voltinc)
+
+    return voltinfl
+
+
+def writeImage(siq):
+
+    imout = open('ReporteAEnviar.pdf' , 'wb')
+    imout.write(siq)
+
+def vistagraph(id):
+
+    conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
+    cursor = conexion.cursor()
+    cursor.execute("SELECT archivo FROM reporte WHERE reporte_id = %s" , (id,))
     siq = cursor.fetchone()[0]
     writeImage(siq)
 
@@ -173,7 +230,7 @@ def vistagraph():
 def vistaReporte():
     conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
     cursor = conexion.cursor()
-    cursor.execute("SELECT nombre , fecha  FROM reporte")
+    cursor.execute("SELECT nombre , fecha , reporte_id FROM reporte")
     siq = cursor.fetchall()
     conexion.commit()
     cursor.close()
@@ -181,5 +238,5 @@ def vistaReporte():
     return siq
 
 #vista(str(570))
-#vistagraph()
+vistagraph(36)
 #vistaTiempo(str(655))

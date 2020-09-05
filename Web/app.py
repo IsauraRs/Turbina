@@ -10,6 +10,7 @@ import datos_Serial as ds
 import Models2Consulta as mc 
 import Models1Cargar as cg
 import graficas as gf
+import enviarCorreo as enviar
 
 app = Flask(__name__)
 app.secret_key = "El dibujo de la llave"
@@ -70,12 +71,29 @@ def consulta_volt():
 
     return render_template("busqueda.html" , datos = m[0] , bandera = "4") #potdigital #volt
 
+@app.route('/consulta/difvolin' , methods = ['POST'])
+def consulta_difvolin():
+
+    if request.method == 'POST':
+        difv23 = request.form['dv23']
+        n = mc.vistadifvoltin(difv23)
+    return render_template("busqueda.html" , datos = n[0] , bandera = "5")
+
+@app.route('/consulta/voltin' , methods = ['POST'])
+def consultavoltin():
+
+    if request.method == 'POST':
+        vin = request.form['vin']
+        q = mc.vistaVoltin(vin)
+    return render_template("busqueda.html" , datos = q[0] , bandera = "6")
+    
 @app.route('/consulta/tiempo', methods = ['POST'])
 def consulta_tiempo():
+
     if request.method == 'POST':
         tiempo = request.form['t']
         l = mc.vistaTiempo(tiempo)
-    return render_template("busqueda.html" , datos = l[0] , bandera = "5") #tiempo
+    return render_template("busqueda.html" , datos = l[0] , bandera = "7") #tiempo
 
 @app.route('/graficarmostrar')
 def graficarmostrar():
@@ -89,8 +107,10 @@ def inicio2():
     ds.cerrar()
     if request.method =="POST":
         nombre = request.form['nombre']
+        correo = reques.form['correo']
         today = date.today()
     cg.pdfCarga(nombre , str(today))
+    enviar.enviar_correo_archivo(correo , "Reporte" + str(nombre))
     return render_template("index.html")
 
 @app.route('/Reportes')
@@ -101,6 +121,20 @@ def Reportes():
 @app.route('/layout')
 def las():
     return render_template('layout.html')
+
+@app.route('/EnviarReporte/<id>', methods = ["POST"])
+def EnviarReporte(id):
+    if request.method == "POST":
+        correo = request.form["correo"]
+        mc.vistagraph(id)
+        enviar.enviar_correo_archivo2(correo,"Reporte SdAD")
+    flash("El reporte fue enviado")
+    return render_template('index.html')
+
+@app.route('/Exit')
+def exit1():
+    exit()
+    return "Adiós"
 
 if __name__ == '__main__':
     app.run(debug=True)
