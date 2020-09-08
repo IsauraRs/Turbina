@@ -107,9 +107,10 @@ def consulta_tiempo():
 
 @app.route('/graficarmostrar')
 def graficarmostrar():
+
     datos = ds.vfl
     gf.graficaPotencia(datos)
-    cg.imCarga()
+    #cg.imCarga()
     return render_template ("datos.html" , datos = datos , bandera = 1)
 
 @app.route('/Regresar', methods = ['POST'])

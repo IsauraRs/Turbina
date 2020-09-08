@@ -43,8 +43,8 @@ def graficaPotencia(arduino_lectures):
             #Rw = 40 [Ohm] 100 taps
         #print(listaIe)
         #print(listaIs)
-        dataThread = threading.Thread(target = testc)
-        dataThread.start()
+        #dataThread = threading.Thread(target = testc)
+        #dataThread.start()
         ax.plot(listaP,listaRPM, 'o-')
         #ax.plot(listaRPM, listaP,'o-')
         ax.set_xlabel('Potencia')
