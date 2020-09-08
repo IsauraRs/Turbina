@@ -11,6 +11,7 @@ import Models2Consulta as mc
 import Models1Cargar as cg
 import graficas as gf
 import enviarCorreo as enviar
+import generadorPDF as gp
 
 app = Flask(__name__)
 app.secret_key = "El dibujo de la llave"
@@ -27,9 +28,17 @@ def EncendidoArduino():
     global i
     if i==0:
         threadFunc = threading.Thread(target = ds.testc)
+        #threadFuncG = threading.Thread(target = gf.graficaPotencia)
+        #threadMostrar = threading.Thread(target=graficarmostrar)
+        threadFuncP = threading.Thread(target = gp.generar_PDF)
         threadFunc.start()
+        #threadMostrar.start()
+        threadFuncP.start()
         i=1
     datos = ds.vfl
+    ################
+    #Nuevo
+    #u = gp.generar_PDF(datos)
     return render_template("datos.html" , datos = datos)
 
 #Ruta de consultas
@@ -42,7 +51,7 @@ def consulta_potdigital():
     if request.method == 'POST':
         potdigital = request.form['pd']
         n = mc.vista(potdigital)
-    print(n[1][0])
+    #print(n[1][0])
     return render_template("busqueda.html" , datos = n[1] , bandera = "1") #potdigital
 
 @app.route('/consulta/rpm', methods = ['POST'])
@@ -93,6 +102,7 @@ def consulta_tiempo():
     if request.method == 'POST':
         tiempo = request.form['t']
         l = mc.vistaTiempo(tiempo)
+        tl = gp.generar_PDFC(l[0])
     return render_template("busqueda.html" , datos = l[0] , bandera = "7") #tiempo
 
 @app.route('/graficarmostrar')
@@ -104,12 +114,15 @@ def graficarmostrar():
 
 @app.route('/Regresar', methods = ['POST'])
 def inicio2():
+    datos = ds.vfl
+    u = gp.generar_PDF(datos)
     ds.cerrar()
     if request.method =="POST":
         nombre = request.form['nombre']
-        correo = reques.form['correo']
+        correo = request.form['correo']
         today = date.today()
     cg.pdfCarga(nombre , str(today))
+    flash("El reporte fue enviado a: " + str(correo))
     enviar.enviar_correo_archivo(correo , "Reporte" + str(nombre))
     return render_template("index.html")
 
@@ -128,7 +141,7 @@ def EnviarReporte(id):
         correo = request.form["correo"]
         mc.vistagraph(id)
         enviar.enviar_correo_archivo2(correo,"Reporte SdAD")
-    flash("El reporte fue enviado")
+    flash("El reporte fue enviado a: " + str(correo))
     return render_template('index.html')
 
 @app.route('/Exit')

@@ -238,5 +238,5 @@ def vistaReporte():
     return siq
 
 #vista(str(570))
-vistagraph(36)
+#vistagraph(36)
 #vistaTiempo(str(655))

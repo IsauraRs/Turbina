@@ -4,6 +4,7 @@ from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
 
+#Envía correo de una prueba
 ###Correo con un PDF adjunto
 def enviar_correo_archivo(correo_destinatario, asunto):
     remitente = 'isaura.rs29@gmail.com'
@@ -48,8 +49,8 @@ def enviar_correo_archivo(correo_destinatario, asunto):
         print("No se Pudo enviar el Correo a:")
     # Cerramos la conexión
     sesion_smtp.quit()
-#enviar_correo_archivo("galigaribaldi0@gmail.com" , "Come tierra")
 
+#Envía reporte de una consulta 
 ###Correo con un PDF adjunto
 def enviar_correo_archivo2(correo_destinatario, asunto):
     remitente = 'isaura.rs29@gmail.com'
