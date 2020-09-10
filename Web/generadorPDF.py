@@ -91,7 +91,6 @@ def generar_PDFC(datos1):
     #print("Entra a generador")
     #d = datos[0]
     style = ParagraphStyle(
-        fontName='OpenSans',
         name='Normal',
         fontSize=10,
     )

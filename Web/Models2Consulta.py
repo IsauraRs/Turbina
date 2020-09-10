@@ -1,5 +1,4 @@
 import psycopg2
-from app import *
 
 host = 'ec2-34-225-82-212.compute-1.amazonaws.com'
 

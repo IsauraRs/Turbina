@@ -4,14 +4,20 @@ from flask import redirect , url_for , session
 import threading
 from datetime import date
 from datetime import datetime
-
-#Módulos propios 
-import datos_Serial as ds
+import alertMsg as alert
 import Models2Consulta as mc 
 import Models1Cargar as cg
 import graficas as gf
 import enviarCorreo as enviar
 import generadorPDF as gp
+
+try:
+
+    #Módulos propios 
+    import datos_Serial as ds
+    
+except:
+    alert.altPort()
 
 app = Flask(__name__)
 app.secret_key = "El dibujo de la llave"
@@ -110,7 +116,7 @@ def graficarmostrar():
 
     datos = ds.vfl
     gf.graficaPotencia(datos)
-    #cg.imCarga()
+    cg.imCarga()
     return render_template ("datos.html" , datos = datos , bandera = 1)
 
 @app.route('/Regresar', methods = ['POST'])

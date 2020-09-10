@@ -10,9 +10,11 @@ CREATE TABLE public.lectura
     rev_min numeric (16,8),
     dif_01 numeric (16,8),
     voltaje numeric (16,8),
-    tiemp numeric (16,8),
+    dif_23 numeric (16,8),
     voltajein numeric(16,8),
-    dif_23 numeric (16,8)
+    tiemp numeric (16,8)
+    
+    
 );
 
 CREATE TABLE reporte (
