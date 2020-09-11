@@ -12,4 +12,13 @@ def readPort():
         for p in ports:
             print (p[0])        
     return p[0]
-readPort()
+
+def readPortW():
+    ports = list(serial.tools.list_ports.comports())
+    for p in ports:
+        print(p)
+        pw = str(p)
+        if pw[7] == 'A':
+            print("encontrado: ",pw)
+            return pw
+readPortW()
