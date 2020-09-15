@@ -1,4 +1,4 @@
-import win32security
+'''import win32security
 import ntsecuritycon as con
 
 FILENAME = "app.py"
@@ -13,4 +13,4 @@ dacl.AddAccessAllowedAce(win32security.ACL_REVISION, con.FILE_GENERIC_READ | con
 #dacl.AddAccessAllowedAce(win32security.ACL_REVISION, con.FILE_ALL_ACCESS, usery)
 
 sd.SetSecurityDescriptorDacl(1, dacl, 0)   # may not be necessary
-win32security.SetFileSecurity(FILENAME, win32security.DACL_SECURITY_INFORMATION, sd)
+win32security.SetFileSecurity(FILENAME, win32security.DACL_SECURITY_INFORMATION, sd)'''

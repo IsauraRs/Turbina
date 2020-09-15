@@ -10,7 +10,7 @@ from reportlab.platypus import TableStyle
 from reportlab.lib import colors
 import Models2Consulta as consulta
 #import datos_Serial as ds
-from datos_Serial import *
+#from datos_Serial import *
 from datetime import date
 import time
 

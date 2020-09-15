@@ -1,4 +1,5 @@
 import matplotlib as mlp
+mlp.use('Agg')
 import matplotlib.pyplot as plt
 #Módulos propios
 from datos_Serial import * 

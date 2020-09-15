@@ -4,7 +4,7 @@ from flask import redirect , url_for , session
 import threading
 from datetime import date
 from datetime import datetime
-import alertMsg as alert
+#import alertMsg as alert
 import Models2Consulta as mc 
 import Models1Cargar as cg
 import graficas as gf
@@ -38,9 +38,11 @@ def EncendidoArduino():
         #threadMostrar = threading.Thread(target=graficarmostrar)
         threadFuncP = threading.Thread(target = gp.generar_PDF)
         threadFunc.start()
+        #threadFuncG.start()
         #threadMostrar.start()
         threadFuncP.start()
         i=1
+    ds.vfl=[]
     datos = ds.vfl
     ################
     #Nuevo
@@ -115,6 +117,7 @@ def consulta_tiempo():
 def graficarmostrar():
 
     datos = ds.vfl
+    print(datos)
     gf.graficaPotencia(datos)
     cg.imCarga()
     return render_template ("datos.html" , datos = datos , bandera = 1)

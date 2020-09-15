@@ -1,5 +1,5 @@
 import serial.tools.list_ports 
-import alertMsg as al
+#import alertMsg as al
 global ports
 def readPort():
     ports = list(serial.tools.list_ports.comports())
@@ -21,4 +21,4 @@ def readPortW():
         if pw[7] == 'A':
             print("encontrado: ",pw)
             return pw
-readPortW()
+#readPortW()
