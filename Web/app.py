@@ -4,12 +4,17 @@ from flask import redirect , url_for , session
 import threading
 from datetime import date
 from datetime import datetime
+
+from numba import jit 
+
 #import alertMsg as alert
 import Models2Consulta as mc 
 import Models1Cargar as cg
 import graficas as gf
 import enviarCorreo as enviar
 import generadorPDF as gp
+#import gatheringData as gaD
+#from gatheringData import gdList
 
 try:
 
@@ -29,6 +34,7 @@ def hello_world():
     return render_template('index.html')
 
 #Ruta de encendido 
+@jit
 @app.route('/EncendidoArduino')
 def EncendidoArduino():
     global i
@@ -42,9 +48,14 @@ def EncendidoArduino():
         #threadMostrar.start()
         threadFuncP.start()
         i=1
-    ds.vfl=[]
-    datos = ds.vfl
+    #ds.vfl=[]
+    #datos = ds.vfl
     ################
+    datos = ds.vfl           
+    gf.graficaPotencia(datos)
+    #datos2 = gf.displayList
+    #gaD.gathD(datos1)
+    #datos = gaD.gdList
     #Nuevo
     #u = gp.generar_PDF(datos)
     return render_template("datos.html" , datos = datos)
@@ -61,6 +72,7 @@ def consulta_potdigital():
         n = mc.vista(potdigital)
     #print(n[1][0])
     return render_template("busqueda.html" , datos = n[1] , bandera = "1") #potdigital
+
 
 @app.route('/consulta/rpm', methods = ['POST'])
 def consulta_rpm():
@@ -113,14 +125,30 @@ def consulta_tiempo():
         tl = gp.generar_PDFC(l[0])
     return render_template("busqueda.html" , datos = l[0] , bandera = "7") #tiempo
 
+#@jit
 @app.route('/graficarmostrar')
 def graficarmostrar():
 
-    datos = ds.vfl
-    print(datos)
-    gf.graficaPotencia(datos)
-    cg.imCarga()
-    return render_template ("datos.html" , datos = datos , bandera = 1)
+    
+    datos = ds.vfl          
+    #print("Datos", datosf[0])
+    #print("datos1: ",datos)
+    #cal.potencias(datos1)
+    #print(datos)
+    #threadgd = threading.Thread(target=gaD.gathD)  
+    #threadG = threading.Thread(target=gf.graficaPotencia) 
+    #threadgd.start()
+    #threadG.start()
+    gf.graficaPotencia(datos) #datos
+    #datos2 = gf.displayList
+    #gaD.gathD(datos1)
+    #datos = gaD.gdList
+    #print("Datos: ", datos)
+    
+
+
+    #cg.imCarga()
+    return render_template ("datos.html" , datos = datos , bandera = 1) #datos = datos
 
 @app.route('/Regresar', methods = ['POST'])
 def inicio2():
