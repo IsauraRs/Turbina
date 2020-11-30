@@ -38,7 +38,7 @@ def generar_PDF(datos):
     img1 = "static/img/imageEfmotor.jpg"
     img2 = "static/img/imageEfTurbina.jpg"
     data = [
-        ["Potenciómetro digital", "RPM", "Diferencia de voltaje" , "Voltaje" , "Tiempo" , "Diferencia de voltaje[in]" , "Voltaje[in]"]
+        ["Potenciómetro digital", "RPM", "Diferencia de voltaje" , "Voltaje" , "Diferencia de voltaje[in]" , "Voltaje[in]" , "Tiempo" , "Potencia" , "Eficiencia del generador" , "Eficiencia de la turbina"]
     ]
     for i in datos:
         l = list(i)
@@ -99,7 +99,7 @@ def generar_PDFC(datos1):
     #img1 = "static/img/imageEfmotor.jpg"
     #img2 = "static/img/imageEfTurbina.jpg"
     data = [
-        ["Potenciómetro digital", "RPM", "Diferencia de voltaje" , "Voltaje" , "Tiempo" , "Diferencia de voltaje[in]" , "Voltaje[in]"]
+        ["Potenciómetro digital", "RPM", "Diferencia de voltaje" , "Voltaje" , "Diferencia de voltaje[in]" , "Voltaje[in]" , "Tiempo" , "Potencia" , "Eficiencia del generador" , "Eficiencia de la turbina"]
     ]
     for i in datos1:
         l = list(i)
