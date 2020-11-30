@@ -5,23 +5,29 @@
             <tr class="bg-danger">
                 <th>Potenciómetro digital</th>
                 <th>Revoluciones por minuto</th>
-                <th>Diferencial de voltaje (out)</th>
-                <th>Voltaje (out)</th>
                 <th>Diferencial de voltaje (in)</th>
                 <th>Voltaje (in)</th>
+                <th>Diferencial de voltaje (out)</th>
+                <th>Voltaje (out)</th>
                 <th>Tiempo</th>
+                <th>Potencia</th>
+                <th>Eficiencia del generador</th>
+                <th>Eficiencia del motor</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 {% for i in datos %}
-                <td>{{ i.0 }}</td>
+                <td>{{ i.0 }}</td> 
                 <td>{{ i.1 }}</td>
                 <td>{{ i.2 }}</td>
                 <td>{{ i.3 }}</td>
                 <td>{{ i.4 }}</td>
                 <td>{{ i.5 }}</td>
                 <td>{{ i.6 }}</td>
+                <td>{{ i.7 }}</td>
+                <td>{{ i.8 }}</td>
+                <td>{{ i.9 }}</td>
             </tr>
             {% endfor %}
         </tbody>
