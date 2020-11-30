@@ -48,6 +48,7 @@ try:
         arduino.write(b'Y')
         #global nl
         nl = []
+        ndat = []
         global vfl
         while True:
             try:
@@ -81,10 +82,6 @@ try:
                                 print("P",P)
                                 print("em",em)
                                 print("ed",ed)
-
-                                ndat.append(P)
-                                ndat.append(em)
-                                ndat.append(ed)
                     
                             else:
                                 P = 0
@@ -96,6 +93,7 @@ try:
                             ndat.append(P)
                             ndat.append(em)
                             ndat.append(ed)
+                            print("ndat: ", ndat)
 
                             
 
@@ -103,7 +101,6 @@ try:
                             print("errors in ds")
 
                         #Aquí estaba lo de ndat
-                        
 
                     arduino_lectures.append(ndat[0])
                     arduino_lectures.append(ndat[1])
@@ -113,7 +110,7 @@ try:
                     #time.sleep(3)
                     #print("RPM: "+str(arduino_lectures[1])+" diff: "+str(arduino_lectures[2])+" Voltaje: "+str(arduino_lectures[3])+ "dif2: " + str(arduino_lectures[4]) + " Tiempo: "+str(arduino_lectures[4])+" Pot Digt: "+str(arduino_lectures[0]))
                     #4 dif vol23 5 volt in
-                    #conex.carga(arduino_lectures[0],arduino_lectures[1],arduino_lectures[2],arduino_lectures[3],arduino_lectures[4],arduino_lectures[5],arduino_lectures[6])
+                    #conex.carga(arduino_lectures[0],arduino_lectures[1],arduino_lectures[2],arduino_lectures[3],arduino_lectures[4],arduino_lectures[5],arduino_lectures[6],arduino_lectures[7])
                     for i in range(10):  #7
                         nl.append(arduino_lectures[i])
                     nl = list(nl)
@@ -123,7 +120,8 @@ try:
                     #print("vfl: ", vfl)
                     nl=[]
                     arduino_lectures = []
-                    
+                    ndat = []
+                    print("ndatL: ", ndat)
 
             except serial.serialutil.SerialException:
                 print("Ex1")
