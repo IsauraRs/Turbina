@@ -15,7 +15,7 @@ def vista(dpVal):
     conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
     cursor = conexion.cursor()
     #cursor.execute("SELECT * FROM lectura;")
-    cursor.execute("SELECT valor_pot_digt, rev_min, dif_01, voltaje, dif_23, voltajein, tiemp FROM lectura WHERE valor_pot_digt = %s" , (dpVal, ))
+    cursor.execute("SELECT valor_pot_digt, rev_min, dif_01, voltaje_in, dif_23, voltaje_out, tiemp, potencia, ef_generador, ef_turbina FROM lectura WHERE valor_pot_digt = %s" , (dpVal, ))
     #("SELECT valor_pot_digt FROM lectura WHERE valor_pot_digt = %s", (dpVal,))
     datos = cursor.fetchall()
 
@@ -46,7 +46,7 @@ def vistavolt(voltVal):
     
     conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
     cursor = conexion.cursor()
-    cursor.execute("SELECT valor_pot_digt, rev_min, dif_01, voltaje, dif_23, voltajein, tiemp FROM lectura WHERE voltaje = %s" , (voltVal, ))
+    cursor.execute("SELECT valor_pot_digt, rev_min, dif_01, voltaje_in, dif_23, voltaje_out, tiemp, potencia, ef_generador, ef_turbina FROM lectura WHERE voltaje = %s" , (voltVal, ))
     vd = cursor.fetchall()
 
     for u in vd:
@@ -73,7 +73,7 @@ def vistadifvolt(difVoltVal):
 
     conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
     cursor = conexion.cursor()
-    cursor.execute("SELECT valor_pot_digt, rev_min, dif_01, voltaje, dif_23, voltajein, tiemp FROM lectura WHERE dif_01 = %s" , (difVoltVal, ))
+    cursor.execute("SELECT valor_pot_digt, rev_min, dif_01, voltaje_in, dif_23, voltaje_out, tiemp, potencia, ef_generador, ef_turbina FROM lectura WHERE dif_01 = %s" , (difVoltVal, ))
     vf = cursor.fetchall()
 
     for e in vf:
@@ -104,7 +104,7 @@ def vistarpm(rpmVal):
 
     conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
     cursor = conexion.cursor()
-    cursor.execute("SELECT valor_pot_digt, rev_min, dif_01, voltaje, dif_23, voltajein, tiemp FROM lectura WHERE rev_min = %s" , (rpmVal, ))
+    cursor.execute("SELECT valor_pot_digt, rev_min, dif_01, voltaje_in, dif_23, voltaje_out, tiemp, potencia, ef_generador, ef_turbina FROM lectura WHERE rev_min = %s" , (rpmVal, ))
     rd = cursor.fetchall()
 
     for e in rd:
@@ -132,7 +132,7 @@ def vistaTiempo(tiempoVal):
 
     conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
     cursor = conexion.cursor()
-    cursor.execute("SELECT valor_pot_digt, rev_min, dif_01, voltaje, dif_23, voltajein, tiemp FROM lectura WHERE tiemp = %s" , (tiempoVal, ))
+    cursor.execute("SELECT valor_pot_digt, rev_min, dif_01, voltaje_in, dif_23, voltaje_out, tiemp, potencia, ef_generador, ef_turbina FROM lectura WHERE tiemp = %s" , (tiempoVal, ))
     x = cursor.fetchall()
 
     for t in x:
@@ -160,7 +160,7 @@ def vistadifvoltin(difv2):
 
     conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
     cursor = conexion.cursor()
-    cursor.execute("SELECT valor_pot_digt, rev_min, dif_01, voltaje, dif_23, voltajein, tiemp  FROM lectura WHERE dif_23 = %s" , (difv2, ))
+    cursor.execute("SELECT valor_pot_digt, rev_min, dif_01, voltaje_in, dif_23, voltaje_out, tiemp, potencia, ef_generador, ef_turbina  FROM lectura WHERE dif_23 = %s" , (difv2, ))
     d23 = cursor.fetchall()
 
     for z in d23:
@@ -188,7 +188,7 @@ def vistaVoltin(vinVal):
 
     conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
     cursor = conexion.cursor()
-    cursor.execute("SELECT valor_pot_digt, rev_min, dif_01, voltaje, dif_23, voltajein, tiemp  FROM lectura WHERE voltajein = %s" , (vinVal, ))
+    cursor.execute("SELECT valor_pot_digt, rev_min, dif_01, voltaje_in, dif_23, voltaje_out, tiemp, potencia, ef_generador, ef_turbina  FROM lectura WHERE voltajein = %s" , (vinVal, ))
     vinf = cursor.fetchall()
 
     for h in vinf:
