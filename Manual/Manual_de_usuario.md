@@ -1,5 +1,5 @@
-```html
-<img src = "/home/isaura/Documentos/Datos/Web/static/img/image4.png"
+```HTML
+<img src = "/home/isaura/Documentos/Datos/Web/static/img/image4.png">
 ```
 
 
