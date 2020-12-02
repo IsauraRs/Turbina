@@ -6,7 +6,7 @@
 
 
 
-![Logo IINGEN](/home/isaura/Documentos/Datos/Web/static/img/image72.png)
+![IINGENLogo](https://github.com/IsauraRs/Turbina/blob/master/Manual/IINGENLogo.png)
 
 
 
