@@ -1,4 +1,10 @@
-![](/home/isaura/Documentos/Datos/Web/static/img/image4.png)
+```html
+<img src = "/home/isaura/Documentos/Datos/Web/static/img/image4.png"
+```
+
+
+
+![image4](/home/isaura/Documentos/Datos/Web/static/img/image4.png)
 
 
 
@@ -6,7 +12,7 @@
 
 
 
-![](/home/isaura/Documentos/Datos/Web/static/img/image72.png)
+![Logo IINGEN](/home/isaura/Documentos/Datos/Web/static/img/image72.png)
 
 
 
