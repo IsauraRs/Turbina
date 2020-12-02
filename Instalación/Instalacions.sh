@@ -19,6 +19,8 @@ c7="psycopg2==2.8.4"
 c8="pyserial==3.4"
 c9="reportlab==3.5.34"
 c10="serial==0.0.97"
+c11="numba==0.51.2"
+c12="openpyxl==3.0.5"
 echo $c > requiriments.txt
 echo $c1 >> requiriments.txt
 echo $c2 >> requiriments.txt
@@ -30,4 +32,6 @@ echo $c7 >> requiriments.txt
 echo $c8 >> requiriments.txt
 echo $c9 >> requiriments.txt
 echo $c10 >> requiriments.txt
+echo $c11 >> requiriments.txt
+echo $c12 >> requiriments.txt
 pip3 install -r requiriments.txt
