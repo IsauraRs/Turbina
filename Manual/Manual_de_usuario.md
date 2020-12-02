@@ -1,10 +1,4 @@
-```HTML
-<img src = "/home/isaura/Documentos/Datos/Web/static/img/image4.png">
-```
-
-
-
-![image4](/home/isaura/Documentos/Datos/Web/static/img/image4.png)
+![CEMIEOLogo](https://github.com/IsauraRs/Turbina/blob/master/Manual/CEMIEOLogo.png)
 
 
 
