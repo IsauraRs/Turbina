@@ -21,7 +21,10 @@ listalr = []
 listalP = []
 listalEm = []
 listalEt = []
-displayList = []
+gLem = []
+gLet = []
+gLr = []
+gLrpm = []
 sR = 0
 promsR = 0
 P = 0
@@ -171,7 +174,7 @@ def graficaPotencia(arduino_lectures):
                 print("Promedio Em", psEm)
                 print("Promedio Ed" , psEd)
                 ##Aquí estaba el for
-
+                
                 '''listaR.clear()
                 listaR1.clear()
                 listaR2.clear()
@@ -188,7 +191,7 @@ def graficaPotencia(arduino_lectures):
                 axem.plot(psR , psEm , 'o-') #ed o-
                 #axet.plot(psR , psRpm  , 'o-')
                 #ax.plot(psR , rpm  , 'o-')
-                axem.set_ylim([0,100])
+                axem.set_ylim([0,110])
                 axem.set_xlabel('R[Ohm]')
                 axem.set_ylabel('e_generador[%]')
                 plt.savefig('static/img/imageEfmotor.jpg')
@@ -205,14 +208,17 @@ def graficaPotencia(arduino_lectures):
                 ax = plt.axes()
 
                 ax.plot(psR, psEd,'o-')
+                ax.set_ylabel([0,110])
                 ax.set_xlabel('R[Ohm]')
                 ax.set_ylabel('e_dinamo[%]')
+                plt.savefig('static/img/imageEfTurbina.jpg')
+                plt.show()
                 listaR.clear()
                 listaR1.clear()
                 listaR2.clear()
                 listaR3.clear()
                 listaR4.clear()
-                displayList.clear()
+
                 print("Lista vacía" , listaR)
                 print("Lista P vacía: " , listaR1)
                 print("Lista Em vacía: " , listaR2)

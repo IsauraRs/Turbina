@@ -13,6 +13,7 @@ import Models1Cargar as cg
 import graficas as gf
 import enviarCorreo as enviar
 import generadorPDF as gp
+import spreadSheetReport as ss
 #import gatheringData as gaD
 #from gatheringData import gdList
 
@@ -42,11 +43,13 @@ def EncendidoArduino():
         threadFunc = threading.Thread(target = ds.testc)
         #threadFuncG = threading.Thread(target = gf.graficaPotencia)
         #threadMostrar = threading.Thread(target=graficarmostrar)
+        #threadSpread = threading.Thread(target = ss.setData)
         threadFuncP = threading.Thread(target = gp.generar_PDF)
         threadFunc.start()
         #threadFuncG.start()
         #threadMostrar.start()
         threadFuncP.start()
+        #threadSpread.start()
         i=1
     #ds.vfl=[]
     #datos = ds.vfl
@@ -131,21 +134,7 @@ def graficarmostrar():
 
     
     datos = ds.vfl          
-    #print("Datos", datosf[0])
-    #print("datos1: ",datos)
-    #cal.potencias(datos1)
-    #print(datos)
-    #threadgd = threading.Thread(target=gaD.gathD)  
-    #threadG = threading.Thread(target=gf.graficaPotencia) 
-    #threadgd.start()
-    #threadG.start()
     gf.graficaPotencia(datos) #datos
-    #datos2 = gf.displayList
-    #gaD.gathD(datos1)
-    #datos = gaD.gdList
-    #print("Datos: ", datos)
-    
-
 
     #cg.imCarga()
     return render_template ("datos.html" , datos = datos , bandera = 1) #datos = datos
@@ -154,6 +143,7 @@ def graficarmostrar():
 def inicio2():
     datos = ds.vfl
     u = gp.generar_PDF(datos)
+    ssr = ss.setData(datos)
     ds.cerrar()
     if request.method =="POST":
         nombre = request.form['nombre']

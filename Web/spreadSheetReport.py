@@ -31,9 +31,11 @@ def setData(data):
         inData.append(i)
         for t in inData:
             s = [headersL,t]
-
-            for r in s:
-                sheet.append(r)
+            
+            #for r in s:
+            #    sheet.append(r)
+    sheet.append(s[0])
+    sheet.append(s[1])
 
     print("data",inData)
     wb.save(filesheet)

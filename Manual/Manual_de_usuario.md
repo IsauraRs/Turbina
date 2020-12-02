@@ -58,11 +58,13 @@
 
 1.1. Mac OS y Ubuntu
 
-Ingrese a: https://github.com/IsauraRs/Turbina y en la pestaña "Code", seleccione la opción "Download ZIP".
+Ingrese a: https://github.com/IsauraRs/Turbina y en la pestaña "Code", seleccione la opción "Download ZIP". 
+
+Nota: de click derecho sobre el enlace y seleccione "Abrir enlace en una nueva pestaña" o saldrá del manual.
 
 ![downloads](https://github.com/IsauraRs/Turbina/blob/master/Manual/downloadSS.png)
 
-Una vez terminada la descarga, extraiga la carpeta "Turbina-master" en una alguna ubicación conozca.
+Una vez terminada la descarga, extraiga la carpeta "Turbina-master" en una ubicación que conozca y/o recuerde.
 
 Ingrese a su terminal y diríjase a la ruta donde se encuentra la carpeta "Turbina-master", que extrajo en el paso anterior. Una vez que esté en dicha ruta, ingrese a la carpeta "Instalación" y escriba lo siguiente:
 
