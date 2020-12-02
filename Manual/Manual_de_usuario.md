@@ -2,7 +2,11 @@
 
 
 
+
+
 # Manual de usuario para el sistema de adquisición de datos
+
+
 
 
 
@@ -56,9 +60,7 @@
 
 Ingrese a: https://github.com/IsauraRs/Turbina y en la pestaña "Code", seleccione la opción "Download ZIP".
 
-![image-20201201144947068](/home/isaura/snap/typora/31/.config/Typora/typora-user-images/image-20201201144947068.png)
-
-![image-20201201145314180](/home/isaura/snap/typora/31/.config/Typora/typora-user-images/image-20201201145314180.png)
+![downloads](https://github.com/IsauraRs/Turbina/blob/master/Manual/downloadSS.png)
 
 Una vez terminada la descarga, extraiga la carpeta "Turbina-master" en una alguna ubicación conozca.
 
@@ -76,11 +78,11 @@ Y después:
 
 Lo siguiente que aparecerá en su terminal debe parecerse a:
 
-![image-20201201185057708](/home/isaura/snap/typora/31/.config/Typora/typora-user-images/image-20201201185057708.png)
+![macSS](https://github.com/IsauraRs/Turbina/blob/master/Manual/macSS.png)
 
 En  MacOS, o a:
 
-![image-20201201185632045](/home/isaura/snap/typora/31/.config/Typora/typora-user-images/image-20201201185632045.png)
+![ubuntuSS](https://github.com/IsauraRs/Turbina/blob/master/Manual/ubuntuSS.png)
 
 En Ubuntu. Es probable que a usted no le aparezcan las alertas que aparecen en amarillo.
 
@@ -92,7 +94,7 @@ python3 app.py
 
 En caso de que no tenga conectado un arduino, le aparecerá un cuadro de alerta (o más de uno).
 
-![image-20201201192419402](/home/isaura/snap/typora/31/.config/Typora/typora-user-images/image-20201201192419402.png)
+![tkWarning](https://github.com/IsauraRs/Turbina/blob/master/Manual/tkSS.png)
 
 Basta con pulsar el botón "OK", si su intención es realizar búsquedas, si su intención es realizar pruebas, será necesario conectar el Sistema de Adquisición de Datos.
 
