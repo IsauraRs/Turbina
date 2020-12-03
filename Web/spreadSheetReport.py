@@ -12,6 +12,8 @@ sheet = wb.active
 logos = Image("static/img/logoSS.png")
 sheet.add_image(logos,'A1')
 
+sheet.delete_rows(6,900)
+
 def getHeaders():
     A1 = sheet['A5'].value
     B1 = sheet['B5'].value
