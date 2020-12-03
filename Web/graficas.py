@@ -1,11 +1,7 @@
 import matplotlib as mlp
 mlp.use('Agg')
 import matplotlib.pyplot as plt
-#from numba import  jit
-#Módulos propios
-#import gatheringData as gDa
 
-#Poner conex
 r = (12/1.87) #[Ohm]
 listaP = []
 listaRPM = []
@@ -31,20 +27,7 @@ P = 0
 em = 0
 ed = 0
 
-'''ax.plot(rpm, em,'o-')
-ax.set_xlabel('RPM')
-ax.set_ylabel('ef_m[%]')'''
 
-#axem.plot(R , em)#, 'o-')
-#axem.set_xlabel('R[Ohm]')
-#axem.set_ylabel('e_generador[%]')
-'''axet.plot(R , ed , 'o')
-axet.set_xlabel('R[Ohm]')
-axet.set_ylabel('e_motor[%]')'''
-#axet.plot(rpm , P , 'o-')
-#plt.show()  
- 
-#@jit 
 def graficaPotencia(arduino_lectures):
     
     displayList = []
@@ -65,13 +48,6 @@ def graficaPotencia(arduino_lectures):
     listalRpms = []
     mlp.rcParams.update({'font.size': 10})
     pivote2=1
-    
-    '''for j in range(len(arduino_lectures)):
-        RList = arduino_lectures[j][0]
-        rpmList = arduino_lectures[j][1]'''
-        #PList = arduino_lectures[j][7]
-        #efgList = arduino_lectures[j][8]
-        #efmList = arduino_lectures[j][9]
     
     if len(arduino_lectures) >= 7:
         for i in range(len(arduino_lectures)):
@@ -118,7 +94,7 @@ def graficaPotencia(arduino_lectures):
                             
                 except ZeroDivisionError:
                     print("errors")
-            if len(listaR)==49:
+            if len(listaR)==39:
                 print("final antes de agregar: ",listalr)
                 print("final Pot antes de agregar: ",listalP)
                 print("final Em antes de agregar: ",listalEm)
@@ -210,9 +186,9 @@ def graficaPotencia(arduino_lectures):
                 ax.plot(psR, psEd,'o-')
                 ax.set_ylabel([0,110])
                 ax.set_xlabel('R[Ohm]')
-                ax.set_ylabel('e_dinamo[%]')
+                ax.set_ylabel('e_turbina[%]')
                 plt.savefig('static/img/imageEfTurbina.jpg')
-                plt.show()
+
                 listaR.clear()
                 listaR1.clear()
                 listaR2.clear()
@@ -224,30 +200,3 @@ def graficaPotencia(arduino_lectures):
                 print("Lista Em vacía: " , listaR2)
                 print("Lista RPM vacía:" , listaR4)
     
-    #ax.plot(PList,rpmList, 'o-')
-    ##ax.plot(rpm, ed,'o-')
-    #ax.plot(listaefm, listaRPM,'o-')
-    #ax.plot(listaRPM, listaefm,'o-')
-    #ax.set_xlabel('RPM')
-    #ax.set_ylabel('ef_m[%]')
-    #plt.show()
-    #plt.savefig('static/img/image.jpg') 
-    
-    '''
-    axem.plot(psR , ed , 'o-')
-    axem.plot(listaefm , listaR  , 'o-')
-    axem.plot(listaR , listaeft  , 'o-')
-    axem.set_xlab0el('R[Ohm]')
-    axem.set_ylabel('e_generador[%]')
-    plt.savefig('static/img/imageEfmotor.jpg')
-
-    #axet.plot(R , em , 'o-')
-    #axet.plot(listaefm , listaR , 'o-')
-    ##axet.plot(listaR , listaefm , 'o-')
-    axet.set_xlabel('R[Ohm]')
-    axet.set_ylabel('e_motor[%]')
-    plt.savefig('static/img/imageEfTurbina.jpg')'''
-
-    
-#arduino_lectures = [[398.0, 0.0, 0.0, 0.0, 1.0, 0.0002, 1213.0], [399.0, 0.0, -225.0, -0.0422, -1.0, -0.0002, 1216.0], [400.0, 0.0, 0.0, 0.0, 1.0, 0.0002, 1219.0], [401.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1222.0], [402.0, 0.0, 0.0, 0.0, -1.0, -0.0002, 1225.0], [403.0, 0.0, 5.0, 0.0009, 1.0, 0.0002, 1228.0], [404.0, 0.0, 0.0, 0.0, 1.0, 0.0002, 1231.0], [405.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1234.0], [406.0, 0.0, 4.0, 0.0007, 0.0, 0.0, 1237.0], [407.0, 0.0, 0.0, 0.0, -1.0, -0.0002, 1240.0], [408.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1243.0], [409.0, 0.0, 2.0, 0.0004, 1.0, 0.0002, 1246.0], [410.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1249.0], [411.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1252.0]]
-#graficaPotencia(1)
