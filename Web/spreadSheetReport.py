@@ -1,7 +1,7 @@
 from openpyxl import load_workbook
 from openpyxl.drawing.image import Image
 
-inData = []
+
 headersL = []
 
 filesheet = "ReporteSpreadsheet.xlsx"
@@ -26,22 +26,14 @@ def getHeaders():
 
     headersL = ['A1','B1','C1','D1','E1','F1','G1','H1','I1','J1']
 
+    s = [headersL,]
+    print("S antes: ", s)
 def setData(data):
+    print("dataa:",data)
     for i in data:
-        inData.append(i)
-        for t in inData:
-            s = [headersL,t]
-            
-            #for r in s:
-            #    sheet.append(r)
-    sheet.append(s[0])
-    sheet.append(s[1])
 
-    print("data",inData)
+        sheet.append(i)
+        #print("sh",sheet)
+
     wb.save(filesheet)
-#getHeaders()
-'''s = [headersL,
-    (1,2,3,4,5,6,7,8,9,10)]'''
-#p = [1,2,3,4,5,6,7,8,9,10]
-#setData(p)
 
