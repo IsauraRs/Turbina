@@ -1,6 +1,7 @@
 import matplotlib as mlp
 mlp.use('Agg')
 import matplotlib.pyplot as plt
+from spreadSheetReport import createGraphs as cg
 
 r = (12/1.87) #[Ohm]
 listaP = []
@@ -31,6 +32,9 @@ ed = 0
 def graficaPotencia(arduino_lectures):
     
     displayList = []
+    displayList1 = []
+    displayList2 = []
+    displayList3 = []
     #Res DP
     listaR = []
     listalr = []
@@ -65,8 +69,8 @@ def graficaPotencia(arduino_lectures):
                 try:
                     if Rdp >=1:
                         print("Es " + str(Rdp))
-                        Ie = (vVg/Rdp)#/1000 #Amperes
-                        Is = (vVd/Rdp)#/1000#Amperes
+                        Ie = (vVg/Rdp)/1000 #Amperes
+                        Is = (vVd/Rdp)/1000#Amperes
                         P = ((((vVg+vVd)-(Ie-Is)*r)*Ie*Is)/(Ie+Is))
                         em = (P/(Ie*vVg))*100
                         ed = ((Is*vVd)/P)*100
@@ -150,7 +154,13 @@ def graficaPotencia(arduino_lectures):
                 print("Promedio Em", psEm)
                 print("Promedio Ed" , psEd)
                 ##Aquí estaba el for
-                
+                displayList.append(psR)
+                displayList1.append(psRpm)
+                displayList2.append(psEm)
+                displayList3.append(psEd)
+                cg(displayList,displayList1,displayList2,displayList3)
+                print("dl:",displayList)
+                print("dl1:", displayList1)
                 '''listaR.clear()
                 listaR1.clear()
                 listaR2.clear()
@@ -164,10 +174,11 @@ def graficaPotencia(arduino_lectures):
                 fig= plt.figure()
                 axem = plt.axes()
                 
-                axem.plot(psR , psEm , 'o-') #ed o-
+                axem.plot(displayList, displayList2, 'o-')
+                #axem.plot(psR , psEm , 'o-') #ed o-
                 #axet.plot(psR , psRpm  , 'o-')
                 #ax.plot(psR , rpm  , 'o-')
-                axem.set_ylim([0,110])
+                #axem.set_ylim([0,110])
                 axem.set_xlabel('R[Ohm]')
                 axem.set_ylabel('e_generador[%]')
                 plt.savefig('static/img/imageEfmotor.jpg')
@@ -175,7 +186,8 @@ def graficaPotencia(arduino_lectures):
                 fig2 = plt.figure()
                 axet = plt.axes()
 
-                axet.plot(psR , psRpm  , 'o-')
+                axet.plot(displayList,displayList1,'o-')
+                #axet.plot(psR , psRpm  , 'o-')
                 axet.set_xlabel('R[Ohm]')
                 axet.set_ylabel('RPM')#('e_motor[%]')
                 plt.savefig('static/img/image.jpg')
@@ -183,7 +195,8 @@ def graficaPotencia(arduino_lectures):
                 fig3 = plt.figure()
                 ax = plt.axes()
 
-                ax.plot(psR, psEd,'o-')
+                ax.plot(displayList,displayList3,'o-')
+                #ax.plot(psR, psEd,'o-')
                 ax.set_ylabel([0,110])
                 ax.set_xlabel('R[Ohm]')
                 ax.set_ylabel('e_turbina[%]')
