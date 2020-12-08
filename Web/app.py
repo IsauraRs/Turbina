@@ -14,6 +14,7 @@ import graficas as gf
 import enviarCorreo as enviar
 import generadorPDF as gp
 import spreadSheetReport as ss
+
 #import gatheringData as gaD
 #from gatheringData import gdList
 
@@ -144,6 +145,9 @@ def inicio2():
     datos = ds.vfl
     u = gp.generar_PDF(datos)
     ssr = ss.setData(datos)
+    d1 = gf.displayList
+    d2 = gf.displayList1
+    a = ss.createGraphs(d1,d2)
     ds.cerrar()
     if request.method =="POST":
         nombre = request.form['nombre']
