@@ -1,7 +1,7 @@
 import matplotlib as mlp
 mlp.use('Agg')
 import matplotlib.pyplot as plt
-from spreadSheetReport import createGraphs as cg
+#from spreadSheetReport import createGraphs as cg
 
 r = (12/1.87) #[Ohm]
 listaP = []
@@ -31,10 +31,13 @@ ed = 0
 
 def graficaPotencia(arduino_lectures):
     
+    global displayList, displayList1, displayList2
+
     displayList = []
     displayList1 = []
     displayList2 = []
     displayList3 = []
+    
     #Res DP
     listaR = []
     listalr = []
@@ -89,41 +92,41 @@ def graficaPotencia(arduino_lectures):
                         listaR3.append(ed)
                         listaR4.append(rpm)
                         print("En C")
-                        print("lidts: ", listaR)
+                        '''print("lidts: ", listaR)
                         print("lidtsP: ", listaR1)
                         print("lidtsEM: " , listaR2)
-                        print("lidtsED: " , listaR3)
+                        print("lidtsED: " , listaR3)'''
                         #global listaR1
 
                             
                 except ZeroDivisionError:
                     print("errors")
             if len(listaR)==39:
-                print("final antes de agregar: ",listalr)
+                '''print("final antes de agregar: ",listalr)
                 print("final Pot antes de agregar: ",listalP)
                 print("final Em antes de agregar: ",listalEm)
                 print("lista R:", listaR)
                 print("lista R1: " , listaR1)
-                print("lista R2: " , listaR2)
+                print("lista R2: " , listaR2)'''
                 l=listaR.copy()
                 l1 = listaR1.copy()
                 l2 = listaR2.copy()
                 l3 = listaR3.copy()
                 l4 = listaR4.copy()
-                print("Copia", l)
+                '''print("Copia", l)
                 print("Copia", l1)
                 print("Copia", l2)
                 print("Copia", l3)
-                print("Copia", l4)
+                print("Copia", l4)'''
                 listalr.append(l)
                 listalP.append(l1)
                 listalEm.append(l2)
                 listalEd.append(l3)
                 listalRpms.append(l4)
-                print("Esta es la final: ", listalr)
+                '''print("Esta es la final: ", listalr)
                 print("Esta es la final P: " , listalP)
                 print("Esta es la final EM: " , listalEm)
-                print("Esta es la final RPM: " , listalRpms)
+                print("Esta es la final RPM: " , listalRpms)'''
                 #
                 sR = 0
                 psR = 0
@@ -149,16 +152,16 @@ def graficaPotencia(arduino_lectures):
                 psEd = (sEd/len(l3))
                 psRpm = (sRpm/len(l4))
 
-                print("Promedio Res", psR)
-                print("Promedio Pot", psP)
-                print("Promedio Em", psEm)
-                print("Promedio Ed" , psEd)
-                ##Aquí estaba el for
+                #print("Promedio Res", psR)
+                #print("Promedio Pot", psP)
+                #print("Promedio Em", psEm)
+                #print("Promedio Ed" , psEd)
+                
                 displayList.append(psR)
                 displayList1.append(psRpm)
                 displayList2.append(psEm)
                 displayList3.append(psEd)
-                cg(displayList,displayList1,displayList2,displayList3)
+                #cg(displayList,displayList1) #,displayList2,displayList3)
                 print("dl:",displayList)
                 print("dl1:", displayList1)
                 '''listaR.clear()
