@@ -95,9 +95,9 @@ def generar_PDFC(datos1):
         fontSize=10,
     )
 
-    #img = "static/img/image.jpg"
-    #img1 = "static/img/imageEfmotor.jpg"
-    #img2 = "static/img/imageEfTurbina.jpg"
+    img = "static/img/image.jpg"
+    img1 = "static/img/imageEfmotor.jpg"
+    img2 = "static/img/imageEfTurbina.jpg"
     data = [
         ["Potenciómetro digital", "RPM", "Δvoltaje[in]" , "Voltaje[in]" , "Δvoltaje[out]" , "Voltaje[out]" , "Tiempo" , "Potencia" , "Ef.Generador" , "Ef.Turbina"]
     ]
@@ -130,15 +130,15 @@ def generar_PDFC(datos1):
     
     imI = Image("static/img/logoFinal.png" , 10*inch , 1*inch)
     #imI.hAlign = 'RIGHT'
-    #imagen=Image(img, 10*inch, 6*inch)
-    #imagen1=Image(img1, 10*inch, 6*inch)
-    #imagen2=Image(img2 , 10*inch , 6*inch)
+    imagen=Image(img, 10*inch, 6*inch)
+    imagen1=Image(img1, 10*inch, 6*inch)
+    imagen2=Image(img2 , 10*inch , 6*inch)
     elems = []
     elems.append(imI)
     elems.append(par)
     elems.append(table)
-    #elems.append(imagen)
-    #elems.append(imagen1)
-    #elems.append(imagen2)
+    elems.append(imagen)
+    elems.append(imagen1)
+    elems.append(imagen2)
     #elems.append(imI)
     pdf.build(elems)
