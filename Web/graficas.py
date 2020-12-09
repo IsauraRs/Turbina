@@ -31,7 +31,7 @@ ed = 0
 
 def graficaPotencia(arduino_lectures):
     
-    global displayList, displayList1, displayList2
+    global displayList, displayList1, displayList2,displayList3
 
     displayList = []
     displayList1 = []
@@ -182,7 +182,7 @@ def graficaPotencia(arduino_lectures):
                 #axet.plot(psR , psRpm  , 'o-')
                 #ax.plot(psR , rpm  , 'o-')
                 #axem.set_ylim([0,110])
-                axem.set_xlabel('R[Ohm]')
+                axem.set_xlabel('R[Ω]')
                 axem.set_ylabel('e_generador[%]')
                 plt.savefig('static/img/imageEfmotor.jpg')
                 
@@ -191,7 +191,7 @@ def graficaPotencia(arduino_lectures):
 
                 axet.plot(displayList,displayList1,'o-')
                 #axet.plot(psR , psRpm  , 'o-')
-                axet.set_xlabel('R[Ohm]')
+                axet.set_xlabel('R[Ω]')
                 axet.set_ylabel('RPM')#('e_motor[%]')
                 plt.savefig('static/img/image.jpg')
 
@@ -201,7 +201,7 @@ def graficaPotencia(arduino_lectures):
                 ax.plot(displayList,displayList3,'o-')
                 #ax.plot(psR, psEd,'o-')
                 ax.set_ylabel([0,110])
-                ax.set_xlabel('R[Ohm]')
+                ax.set_xlabel('R[Ω]')
                 ax.set_ylabel('e_turbina[%]')
                 plt.savefig('static/img/imageEfTurbina.jpg')
 
