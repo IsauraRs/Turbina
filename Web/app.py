@@ -30,6 +30,7 @@ app = Flask(__name__)
 app.secret_key = "El dibujo de la llave"
 i=0
 
+@jit
 #Ruta de inicio
 @app.route('/')
 def hello_world():
@@ -129,6 +130,34 @@ def consulta_tiempo():
         tl = gp.generar_PDFC(l[0])
     return render_template("busqueda.html" , datos = l[0] , bandera = "7") #tiempo
 
+@app.route('/consulta/potencia', methods = ['POST'])
+def consulta_potencia():
+
+    if request.method == 'POST':
+        potencia = request.form['pot']
+        pv = mc.vistaPotencia(potencia)
+        pvl = gp.generar_PDFC(pv[0])
+    return render_template("busqueda.html" , datos = pv[0] , bandera = "8") #potencia
+
+@app.route('/consulta/efgenerador', methods = ['POST'])
+def consulta_efgenerador():
+
+    if request.method == 'POST':
+        efgen = request.form['efg']
+        efgv = mc.vistaEfg(efgen)
+        efgvl = gp.generar_PDFC(efgv[0])
+    return render_template("busqueda.html" , datos = efgv[0] , bandera = "9") #eficienciaGenerador
+
+@app.route('/consulta/efturbina', methods = ['POST'])
+def consulta_efturbina():
+
+    if request.method == 'POST':
+        eftur = request.form['eft']
+        eftv = mc.vistaEft(eftur)
+        eftvl = gp.generar_PDFC(eftv[0])
+    return render_template("busqueda.html" , datos = eftv[0] , bandera = "10") #eficienciaTurbina
+
+
 #@jit
 @app.route('/graficarmostrar')
 def graficarmostrar():
@@ -137,7 +166,7 @@ def graficarmostrar():
     datos = ds.vfl          
     gf.graficaPotencia(datos) #datos
 
-    #cg.imCarga()
+    cg.imCarga()
     return render_template ("datos.html" , datos = datos , bandera = 1) #datos = datos
 
 @app.route('/Regresar', methods = ['POST'])
@@ -147,13 +176,18 @@ def inicio2():
     ssr = ss.setData(datos)
     d1 = gf.displayList
     d2 = gf.displayList1
+    d3 = gf.displayList2
+    d4 = gf.displayList3
     a = ss.createGraphs(d1,d2)
+    b = ss.createGraph2(d1,d3)
+    c = ss.createGraph3(d1,d3)
     ds.cerrar()
     if request.method =="POST":
         nombre = request.form['nombre']
         correo = request.form['correo']
         today = date.today()
     cg.pdfCarga(nombre , str(today))
+    cg.xlsxCarga(nombre,str(today))
     flash("El reporte fue enviado a: " + str(correo))
     enviar.enviar_correo_archivo(correo , "Reporte" + str(nombre))
     return render_template("index.html")
@@ -172,6 +206,7 @@ def EnviarReporte(id):
     if request.method == "POST":
         correo = request.form["correo"]
         mc.vistagraph(id)
+        mc.vistaSS(id)
         enviar.enviar_correo_archivo2(correo,"Reporte SdAD")
     flash("El reporte fue enviado a: " + str(correo))
     return render_template('index.html')
