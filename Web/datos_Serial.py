@@ -110,7 +110,7 @@ try:
                     #time.sleep(3)
                     #print("RPM: "+str(arduino_lectures[1])+" diff: "+str(arduino_lectures[2])+" Voltaje: "+str(arduino_lectures[3])+ "dif2: " + str(arduino_lectures[4]) + " Tiempo: "+str(arduino_lectures[4])+" Pot Digt: "+str(arduino_lectures[0]))
                     #4 dif vol23 5 volt in
-                    #conex.carga(arduino_lectures[0],arduino_lectures[1],arduino_lectures[2],arduino_lectures[3],arduino_lectures[4],arduino_lectures[5],arduino_lectures[6],arduino_lectures[7])
+                    conex.carga(arduino_lectures[0],arduino_lectures[1],arduino_lectures[2],arduino_lectures[3],arduino_lectures[4],arduino_lectures[5],arduino_lectures[6],arduino_lectures[7],arduino_lectures[8],arduino_lectures[9])
                     for i in range(10):  #7
                         nl.append(arduino_lectures[i])
                     nl = list(nl)
