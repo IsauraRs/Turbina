@@ -41,6 +41,24 @@
                 <i>Send</i>
             </button>
         </form>
+        <form action="/consulta/potencia" method="POST">
+            Potencia: <input type="text" name = "pot" placeholder="Valor de Potencia"><br>
+            <button type = "submit" class="btn btn-outline-info" name="action">
+                <i>Send</i>
+            </button>
+        </form>
+        <form action="/consulta/efgenerador" method="POST">
+            Ef.Generador: <input type="text" name = "efg" placeholder="Valor de Eficiencia Generador"><br>
+            <button type="submit" class="btn btn-outline-danger" name="action">
+                <i>Send</i>
+            </button>
+        </form>
+        <form action="/consulta/efturbina" method="POST">
+            Ef.Turbina: <input type="text" name="eft" placeholder="Valor de Eficiencia Turbina"><br>
+            <button type="submit" class="btn btn-outline-success" name="action">
+                <i>Send</i>
+            </button>
+        </form>
     </div>
     {% if bandera=="1" %}
     <table class="table table-bordered">
@@ -248,6 +266,111 @@
     </table>
     {% endif %}
     {% if bandera=="7" %}
+    <table class="table table-bordered">
+        <thead>
+            <tr class="bg-success">
+                <th>Potenciómetro digital</th>
+                <th>Revoluciones por minuto</th>
+                <th>Diferencial de voltaje (in)</th>
+                <th>Voltaje (in)</th>
+                <th>Diferencial de voltaje (out)</th>
+                <th>Voltaje (out)</th>
+                <th>Tiempo</th>
+                <th>Potencia</th>
+                <th>Eficiencia_generador</th>
+                <th>Eficiencia_turbina</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for i in datos %}
+                <td>{{ i.0 }}</td>
+                <td>{{ i.1 }}</td>
+                <td>{{ i.2 }}</td>
+                <td>{{ i.3 }}</td>
+                <td>{{ i.4 }}</td>
+                <td>{{ i.5 }}</td>
+                <td>{{ i.6 }}</td>
+                <td>{{ i.7 }}</td>
+                <td>{{ i.8 }}</td>
+                <td>{{ i.9 }}</td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+    {% if bandera=="8" %}
+    <table class="table table-bordered">
+        <thead>
+            <tr class="bg-info">
+                <th>Potenciómetro digital</th>
+                <th>Revoluciones por minuto</th>
+                <th>Diferencial de voltaje (in)</th>
+                <th>Voltaje (in)</th>
+                <th>Diferencial de voltaje (out)</th>
+                <th>Voltaje (out)</th>
+                <th>Tiempo</th>
+                <th>Potencia</th>
+                <th>Eficiencia_generador</th>
+                <th>Eficiencia_turbina</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for i in datos %}
+                <td>{{ i.0 }}</td>
+                <td>{{ i.1 }}</td>
+                <td>{{ i.2 }}</td>
+                <td>{{ i.3 }}</td>
+                <td>{{ i.4 }}</td>
+                <td>{{ i.5 }}</td>
+                <td>{{ i.6 }}</td>
+                <td>{{ i.7 }}</td>
+                <td>{{ i.8 }}</td>
+                <td>{{ i.9 }}</td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+    {% if bandera=="9" %}
+    <table class="table table-bordered">
+        <thead>
+            <tr class="bg-danger">
+                <th>Potenciómetro digital</th>
+                <th>Revoluciones por minuto</th>
+                <th>Diferencial de voltaje (in)</th>
+                <th>Voltaje (in)</th>
+                <th>Diferencial de voltaje (out)</th>
+                <th>Voltaje (out)</th>
+                <th>Tiempo</th>
+                <th>Potencia</th>
+                <th>Eficiencia_generador</th>
+                <th>Eficiencia_turbina</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for i in datos %}
+                <td>{{ i.0 }}</td>
+                <td>{{ i.1 }}</td>
+                <td>{{ i.2 }}</td>
+                <td>{{ i.3 }}</td>
+                <td>{{ i.4 }}</td>
+                <td>{{ i.5 }}</td>
+                <td>{{ i.6 }}</td>
+                <td>{{ i.7 }}</td>
+                <td>{{ i.8 }}</td>
+                <td>{{ i.9 }}</td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+    {% if bandera=="10" %}
     <table class="table table-bordered">
         <thead>
             <tr class="bg-success">
