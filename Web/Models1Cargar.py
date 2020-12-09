@@ -9,7 +9,7 @@ password='3e3c54e483c6797261dad22ef4735c24fa2b8df1fc993252f572bb1618019073'
 def carga(param2, param3, param4, param5, param6, param7, param8, param9, param10, param11):
     conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
     cursor = conexion.cursor()
-    cursor.execute("INSERT INTO lectura(valor_pot_digt, rev_min, dif_01, voltaje_in, dif_23, voltaje_out, tiemp, potencia, ef_generador, ef_turbina) VALUES (%s, %s, %s, %s, %s , %s, %s, %s, %s , %s);",(param2, param3, param4, param5, param6, param7, param8, param9, param10, param11))
+    cursor.execute("INSERT INTO lectura(valor_pot_digt, rev_min, dif_01, voltaje_in, dif_23, voltaje_out, tiemp, potencia, ef_generador, ef_turbina) VALUES (%s, %s, %s, %s, %s , %s, %s, %s, %s , %s);",(param2, param3, param4, param5, param6, param7, param8, param9, param10, param11 ))
     conexion.commit()
     cursor.close()
     conexion.close()
@@ -64,5 +64,26 @@ def pdfCarga(nombre, fecha):
     conexion.commit()
     cursor.close()
     conexion.close()
+
+def readExcel():
+    xl = open("ReporteSpreadsheet.xlsx" , "rb")
+    xlr = xl.read()
+    return xlr
+
+def xlsxCarga(nombre, fecha):
+
+    if nombre=="":
+        nombre="Noname"
+    if fecha=="":
+        fecha="NoDate"
+    conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
+    cursor = conexion.cursor()
+    xll = readExcel()
+    binary = psycopg2.Binary(xll)
+    cursor.execute("INSERT INTO reportess(nombre , fecha , archivo_ss) VALUES (%s , %s , %s);",(nombre, fecha , binary ))
+    conexion.commit()
+    cursor.close()
+    conexion.close()
+
 
 #o = pdfCarga("" , "")

@@ -230,11 +230,123 @@ def vistaReporte():
     conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
     cursor = conexion.cursor()
     cursor.execute("SELECT nombre , fecha , reporte_id FROM reporte")
+    cursor.execute("SELECT nombre , fecha , id_excel FROM reportess")
     siq = cursor.fetchall()
     conexion.commit()
     cursor.close()
     conexion.close()
     return siq
+
+def writeXl(wx):
+    xlOut = open('ReporteSpreadAEnviar.xlsx','wb')
+    xlOut.write(wx)
+
+def vistaSS(id):
+    conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
+    cursor = conexion.cursor()
+    cursor.execute("SELECT archivo_ss FROM reportess WHERE id_excel = %s" , (id,))
+    wx = cursor.fetchone()[0]
+    writeXl(wx)
+
+    conexion.commit()
+    cursor.close()
+    conexion.close()
+
+def vistaRSS():
+
+    conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
+    cursor = conexion.cursor()
+    cursor.execute("SELECT nombre , fecha , id_excel FROM reportess")
+    wx = cursor.fetchall()
+    conexion.commit()
+    cursor.close()
+    conexion.close()
+    return wx
+
+def vistaPotencia(potVal):
+
+    potl = []
+    pc = []
+    pfl = []
+
+    conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
+    cursor = conexion.cursor()
+    cursor.execute("SELECT valor_pot_digt, rev_min, dif_01, voltaje_in, dif_23, voltaje_out, tiemp, potencia, ef_generador, ef_turbina  FROM lectura WHERE potencia = %s" , (potVal, ))
+    pcf = cursor.fetchall()
+
+    for w in pcf:
+        potl.append(w)
+
+    cursor.execute("SELECT COUNT (*) FROM lectura WHERE  potencia = %s" , (potVal, ))
+    pcfa = cursor.fetchall()
+
+    for b in pcfa:
+        pc.append(b)
+    
+    conexion.commit()
+    cursor.close()
+    conexion.close()
+    pfl.append(potl)
+    pfl.append(pc)
+
+    return pfl
+
+def vistaEfg(efgVal):
+    
+    efgl = []
+    efgc = []
+    efgfl = []
+
+    conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
+    cursor = conexion.cursor()
+    cursor.execute("SELECT valor_pot_digt, rev_min, dif_01, voltaje_in, dif_23, voltaje_out, tiemp, potencia, ef_generador, ef_turbina  FROM lectura WHERE ef_generador = %s" , (efgVal, ))
+    efgcf = cursor.fetchall()
+
+    for g in efgcf:
+        efgl.append(g)
+
+    cursor.execute("SELECT COUNT (*) FROM lectura WHERE  ef_generador = %s" , (efgVal, ))
+    efgcfa = cursor.fetchall()
+
+    for b in efgcfa:
+        efgc.append(b)
+    
+    conexion.commit()
+    cursor.close()
+    conexion.close()
+    efgfl.append(efgl)
+    efgfl.append(efgc)
+
+    return efgfl
+
+def vistaEft(eftVal):
+    
+    eftl = []
+    eftc = []
+    eftfl = []
+
+    conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
+    cursor = conexion.cursor()
+    cursor.execute("SELECT valor_pot_digt, rev_min, dif_01, voltaje_in, dif_23, voltaje_out, tiemp, potencia, ef_generador, ef_turbina  FROM lectura WHERE ef_turbina = %s" , (eftVal, ))
+    eftcf = cursor.fetchall()
+
+    for g in eftcf:
+        eftl.append(g)
+
+    cursor.execute("SELECT COUNT (*) FROM lectura WHERE  ef_turbina = %s" , (eftVal, ))
+    eftcfa = cursor.fetchall()
+
+    for b in eftcfa:
+        eftc.append(b)
+    
+    conexion.commit()
+    cursor.close()
+    conexion.close()
+    eftfl.append(eftl)
+    eftfl.append(eftc)
+
+    return eftfl
+
 
 #vista(str(570))
 #vistagraph(36)
