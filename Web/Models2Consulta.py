@@ -1,5 +1,6 @@
 import psycopg2
 
+
 host = 'ec2-34-225-82-212.compute-1.amazonaws.com'
 
 database= 'd60lbn7ubp9jlb'
@@ -218,7 +219,7 @@ def vistagraph(id):
 
     conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
     cursor = conexion.cursor()
-    cursor.execute("SELECT archivo FROM reporte WHERE reporte_id = %s" , (id,))
+    cursor.execute("SELECT archivo FROM reporte AS r, reportess AS rs WHERE r.nombre  = rs.nombre AND r.reporte_id = %s" , (id,))
     siq = cursor.fetchone()[0]
     writeImage(siq)
 
@@ -229,8 +230,7 @@ def vistagraph(id):
 def vistaReporte():
     conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
     cursor = conexion.cursor()
-    cursor.execute("SELECT nombre , fecha , reporte_id FROM reporte")
-    cursor.execute("SELECT nombre , fecha , id_excel FROM reportess")
+    cursor.execute("SELECT r.nombre,r.fecha,reporte_id, rs.nombre, rs.fecha, id_excel FROM reporte AS r, reportess AS rs WHERE r.nombre  = rs.nombre")
     siq = cursor.fetchall()
     conexion.commit()
     cursor.close()
@@ -244,7 +244,7 @@ def writeXl(wx):
 def vistaSS(id):
     conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
     cursor = conexion.cursor()
-    cursor.execute("SELECT archivo_ss FROM reportess WHERE id_excel = %s" , (id,))
+    cursor.execute("SELECT rs.archivo_ss FROM reporte AS r, reportess AS rs WHERE r.nombre  = rs.nombre AND r.reporte_id = %s", (id,))
     wx = cursor.fetchone()[0]
     writeXl(wx)
 
@@ -257,12 +257,14 @@ def vistaRSS():
     conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
     cursor = conexion.cursor()
     cursor.execute("SELECT nombre , fecha , id_excel FROM reportess")
+    #cursor.execute("SELECT r.nombre,r.fecha,reporte_id, rs.nombre, rs.fecha, id_excel FROM reporte AS r, reportess AS rs WHERE r.nombre  = rs.nombre")
     wx = cursor.fetchall()
     conexion.commit()
     cursor.close()
     conexion.close()
     return wx
 
+#Consulta a valores de potencia
 def vistaPotencia(potVal):
 
     potl = []
@@ -291,6 +293,7 @@ def vistaPotencia(potVal):
 
     return pfl
 
+#Consulta a valores de eficiencia del generador
 def vistaEfg(efgVal):
     
     efgl = []
@@ -319,6 +322,7 @@ def vistaEfg(efgVal):
 
     return efgfl
 
+#Consulta a valores de eficiencia de la turbina 
 def vistaEft(eftVal):
     
     eftl = []
@@ -347,7 +351,39 @@ def vistaEft(eftVal):
 
     return eftfl
 
+#Consulta a gráficas de resistencia vs RPM
+def writeGraph(g1c):
+    
+    imout = open('static/img/RvsRPM' , 'wb')
+    imout.write(g1c)
+
+def vistagraph1(id):
+
+    conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
+    cursor = conexion.cursor()
+    cursor.execute("SELECT grafica FROM efgraph WHERE pic_id = %s" , (id,))
+    g1c = cursor.fetchone()[0]
+    writeGraph(g1c)
+
+    conexion.commit()
+    cursor.close()
+    conexion.close()
+
+def vistaGrafica1():
+    conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
+    cursor = conexion.cursor()
+    cursor.execute("SELECT grafica , pic_id FROM efgraph")
+    #cursor.execute("SELECT nombre , fecha , id_excel FROM reportess")
+    g1c = cursor.fetchall()
+    conexion.commit()
+    cursor.close()
+    conexion.close()
+    return g1c
+
+
 
 #vista(str(570))
-#vistagraph(36)
+#vistagraph(194)
 #vistaTiempo(str(655))
+#vistagraph1(2827)
+#vistaSS(2)
