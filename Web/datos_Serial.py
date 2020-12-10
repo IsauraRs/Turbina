@@ -79,9 +79,9 @@ try:
                                 em = (P/(Ie*vVg))*100
                                 ed = ((Is*vVd)/P)*100
 
-                                print("P",P)
-                                print("em",em)
-                                print("ed",ed)
+                                #print("P",P)
+                                #print("em",em)
+                                #print("ed",ed)
                     
                             else:
                                 P = 0
@@ -93,7 +93,7 @@ try:
                             ndat.append(P)
                             ndat.append(em)
                             ndat.append(ed)
-                            print("ndat: ", ndat)
+                            #print("ndat: ", ndat)
 
                             
 
@@ -105,7 +105,7 @@ try:
                     arduino_lectures.append(ndat[0])
                     arduino_lectures.append(ndat[1])
                     arduino_lectures.append(ndat[2])
-                    print("ardL: " , arduino_lectures)
+                    #print("ardL: " , arduino_lectures)
                     # ####   
                     #time.sleep(3)
                     #print("RPM: "+str(arduino_lectures[1])+" diff: "+str(arduino_lectures[2])+" Voltaje: "+str(arduino_lectures[3])+ "dif2: " + str(arduino_lectures[4]) + " Tiempo: "+str(arduino_lectures[4])+" Pot Digt: "+str(arduino_lectures[0]))
@@ -121,7 +121,7 @@ try:
                     nl=[]
                     arduino_lectures = []
                     ndat = []
-                    print("ndatL: ", ndat)
+                    #print("ndatL: ", ndat)
 
             except serial.serialutil.SerialException:
                 print("Ex1")
