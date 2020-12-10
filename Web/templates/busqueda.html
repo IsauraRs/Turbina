@@ -59,6 +59,12 @@
                 <i>Send</i>
             </button>
         </form>
+        <form action="/consulta/grafrrpm" method="POST">
+            Gráfica RvsRPM: <input type="text" name="rrpm" placeholder="ID"><br>
+            <button type="submit" class="btn btn-outline-info" name="action">
+                <i>Send</i>
+            </button>
+        </form>
     </div>
     {% if bandera=="1" %}
     <table class="table table-bordered">
@@ -404,5 +410,10 @@
             {% endfor %}
         </tbody>
     </table>
+    {% endif %} 
+    {% if bandera=="11" %}
+    <h1>RvsRPM</h1>
+    <source media="(min-width: 640px)" srcset="../static/img/RvsRPM">
+    <img src="../static/img/RvsRPM" width="640" height="480" >
     {% endif %}
 {% endblock %}
