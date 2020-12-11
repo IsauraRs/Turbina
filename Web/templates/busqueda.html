@@ -60,8 +60,20 @@
             </button>
         </form>
         <form action="/consulta/grafrrpm" method="POST">
-            Gráfica RvsRPM: <input type="text" name="rrpm" placeholder="ID"><br>
+            Gráfica R vs RPM: <input type="text" name="rrpm" placeholder="ID"><br>
             <button type="submit" class="btn btn-outline-info" name="action">
+                <i>Send</i>
+            </button>
+        </form>
+        <form action="/consulta/grafefg" method="POST">
+            Gráfica R vs Ef.Generador: <input type="text" name="refg" placeholder="ID"><br>
+            <button type="submit" class="btn btn-outline-danger" name="action">
+                <i>Send</i>
+            </button>
+        </form>
+        <form action="/consulta/grafeft" method="POST">
+            Gráfica R vs Ef.Turbina: <input type="text" name="reft" placeholder="ID"><br>
+            <button type="submit" class="btn btn-outline-success" name="action">
                 <i>Send</i>
             </button>
         </form>
@@ -413,5 +425,11 @@
     {% endif %} 
     {% if bandera=="11" %}
     <img src="{{ url_for('static', filename='img/RvsRPM.JPEG') }}" alt="TEXTO" width="640px" height="480px">
+    {% endif %}
+    {% if bandera=="12" %}
+    <img src="{{ url_for('static', filename='img/RvsEfG.JPEG') }}" alt="TEXTO" width="640px" height="480px">
+    {% endif %}
+    {% if bandera=="13" %}
+    <img src="{{ url_for('static', filename='img/RvsEfT.JPEG') }}" alt="TEXTO" width="640px" height="480px">
     {% endif %}
 {% endblock %}

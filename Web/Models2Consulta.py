@@ -380,6 +380,65 @@ def vistaGrafica1():
     conexion.close()
     return g1c
 
+#Consulta a gráficas de Resistencia vs eficiencia del generador
+def writeGraph2(g2c):
+    
+    imout2 = open('static/img/RvsEfG.JPEG' , 'wb')
+    imout2.write(g2c)
+
+def vistagraph2(id):
+
+    conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
+    cursor = conexion.cursor()
+    cursor.execute("SELECT grafica2 FROM efgraph WHERE pic_id = %s" , (id,))
+    g2c = cursor.fetchone()[0]
+    writeGraph2(g2c)
+
+    conexion.commit()
+    cursor.close()
+    conexion.close()
+
+def vistaGrafica2():
+    conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
+    cursor = conexion.cursor()
+    cursor.execute("SELECT grafica2 , pic_id FROM efgraph")
+    #cursor.execute("SELECT nombre , fecha , id_excel FROM reportess")
+    g2c = cursor.fetchall()
+    conexion.commit()
+    cursor.close()
+    conexion.close()
+    return g2c
+
+#Consulta a gráficas de Resistencia vs eficiencia de la turbina
+
+def writeGraph3(g3c):
+    
+    imout3 = open('static/img/RvsEfT.JPEG' , 'wb')
+    imout3.write(g3c)
+
+def vistagraph3(id):
+
+    conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
+    cursor = conexion.cursor()
+    cursor.execute("SELECT grafica3 FROM efgraph WHERE pic_id = %s" , (id,))
+    g3c = cursor.fetchone()[0]
+    writeGraph3(g3c)
+
+    conexion.commit()
+    cursor.close()
+    conexion.close()
+
+def vistaGrafica3():
+    conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
+    cursor = conexion.cursor()
+    cursor.execute("SELECT grafica3 , pic_id FROM efgraph")
+    #cursor.execute("SELECT nombre , fecha , id_excel FROM reportess")
+    g3c = cursor.fetchall()
+    conexion.commit()
+    cursor.close()
+    conexion.close()
+    return g3c
+
 
 
 #vista(str(570))
