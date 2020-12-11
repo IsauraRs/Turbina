@@ -157,6 +157,7 @@ def consulta_efturbina():
         eftv = mc.vistaEft(eftur)
         eftvl = gp.generar_PDFC(eftv[0])
     return render_template("busqueda.html" , datos = eftv[0] , bandera = "10") #eficienciaTurbina
+    
 
 @app.route('/consulta/grafrrpm', methods = ['POST'])
 def consulta_grafrrpm():
@@ -164,9 +165,13 @@ def consulta_grafrrpm():
     if request.method == 'POST':
         grpm = request.form['rrpm']
         grpmv = mc.vistagraph1(grpm)
+        threadCI = threading.Thread(target=grpmv)
+        threadCI.start()
         #time.sleep(15)
         #grpmvl = gp.generar_PDFC(grpmv)#[0])
     return render_template("busqueda.html" , datos = grpmv , bandera = "11") #RvsRPM
+
+
 
 
 #@jit
