@@ -354,7 +354,7 @@ def vistaEft(eftVal):
 #Consulta a gráficas de resistencia vs RPM
 def writeGraph(g1c):
     
-    imout = open('static/img/RvsRPM' , 'wb')
+    imout = open('static/img/RvsRPM.JPEG' , 'wb')
     imout.write(g1c)
 
 def vistagraph1(id):
