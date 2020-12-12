@@ -38,7 +38,7 @@
 
     1. #### Mac OS y Ubuntu.
 
-    2. #### Windows.
+    2.  #### Windows.
 
        
 
@@ -50,13 +50,17 @@
 
     
 
+    	1. #### Envío de reporte correspondiente a una prueba.
+
+​    
+
 4. ### Reportes.
 
-    
+     
 
 5. ### Consultas a datos.
 
-    
+     
 
 6. ### Consultas a reportes.
 
@@ -82,6 +86,8 @@ _**Nota**: de click derecho sobre el enlace y seleccione "Abrir enlace en una nu
 
 ![downloads](https://github.com/IsauraRs/Turbina/blob/master/Manual/downloadSS.png)
 
+_Figura1. Descarga de archivos desde github._
+
 
 
 Una vez terminada la descarga, extraiga la carpeta "Turbina-master" en una ubicación que conozca y/o recuerde.
@@ -104,6 +110,8 @@ Lo siguiente que aparecerá en su terminal debe parecerse a:
 
 ![macSS](https://github.com/IsauraRs/Turbina/blob/master/Manual/macSS.png)
 
+_Figura2. Ejecución del archivo de instalación en MacOS._ 
+
 
 
 En  MacOS, o a:
@@ -111,6 +119,8 @@ En  MacOS, o a:
 
 
 ![ubuntuSS](https://github.com/IsauraRs/Turbina/blob/master/Manual/ubuntuSS.png)
+
+_Figura3. Ejecución del archivo de instalación desde Ubuntu._
 
 
 
@@ -152,7 +162,9 @@ Si su distribución es Ubuntu (o alguna distribución basada en Debian) y falla 
 
 ![BTdirection](https://github.com/IsauraRs/Turbina/blob/master/Manual/BTdir.png)
 
- 
+_Figura4. Dirección del dispositivo bluetooth._
+
+
 
 Abria una nueva terminal e ingrese los siguientes comandos:
 
@@ -229,7 +241,7 @@ sudo rfcomm connect 0 20:18:07:13:62:E2
 
 # 2. Inicio.
 
-Para iniciar la aplicación, una vez realizada la instalación y, en caso de requerirlo, la conexión, en la terminal, vaya a la carpeta "Turbina-master" e ingrese a  la carpeta "Web", ya que haya ingresado ejecute el siguiente comando:
+Para iniciar la aplicación, una vez realizada la instalación y, en caso de requerirlo, la conexión, en la terminal, vaya a la carpeta "Turbina-master" e ingrese a  la carpeta "_Web_", ya que haya ingresado ejecute el siguiente comando:
 
 ```
 python3 app.py 
@@ -241,9 +253,11 @@ En caso de que no tenga conectado un *Arduino*, le aparecerá un cuadro de alert
 
 ![tkWarning](https://github.com/IsauraRs/Turbina/blob/master/Manual/tkSS.png)
 
+_Figura5.  Mensaje de alerta en caso de que no esté conectado un Arduino._
 
 
-Basta con pulsar el botón "OK", si su intención es realizar búsquedas, si su intención es realizar pruebas, será necesario conectar el Sistema de Adquisición de Datos.
+
+Basta con pulsar el botón "_OK_", si su intención es realizar búsquedas, si su intención es realizar pruebas, será necesario conectar el Sistema de Adquisición de Datos.
 
 Hecho lo anterior, abra su navegador web y en el buscador escriba  http://127.0.0.1:5000/ , lo que lo llevará a la página principal del Sistema de Adquisición de Datos.
 
@@ -251,9 +265,99 @@ Hecho lo anterior, abra su navegador web y en el buscador escriba  http://127.0.
 
 ![PaginaPrinc](https://github.com/IsauraRs/Turbina/blob/master/Manual/ppsdad.png)
 
+_Figura6. Página de inicio de la aplicación._
+
 
 
 # 3. Adquisición de datos.
 
-Para comenzar la toma de datos, presione el botón "Begin test".
+Para comenzar la toma de datos, presione el botón "_Begin test_".
+
+
+
+![BeginTest](https://github.com/IsauraRs/Turbina/blob/master/Manual/bgtSS.png)
+
+_Figura7. Botón "Begin test"._
+
+
+
+Esto hará que se active el arduino y comience la toma de datos.
+
+
+
+![Test](https://github.com/IsauraRs/Turbina/blob/master/Manual/testSS.png)
+
+_Figura8. Inicio de prueba._
+
+
+
+El sistema toma 40 datos por cada valor de resistencia. Mientras el valor del potenciómetro digital sea cero, no habrá valores de eficiencia ni de potencia.
+
+Para ver las gráficas correspondientes a resistencia vs potencia, resistencia vs eficiencia  del generador y resistencia vs eficiencia de la turbina, tomadas en tiempo real, presione el botón "Mostrar".
+
+
+
+![MostrarButton](https://github.com/IsauraRs/Turbina/blob/master/Manual/mosSS.png)
+
+_Figura9. Botón "Mostrar"._
+
+
+
+Esto desplegará las tres gráficas, mientras los valores de resistencia sean cero y uno, las gráficas que aparecerán no corresponderán a los datos de esa prueba, debido a que estos se actualizan a partir del valor de resistencia uno del potenciómetro digital, sin embargo, los puntos graficados son un promedio de estas pruebas, por lo que se actualizará hasta que se obtengan cuarenta datos de un solo valor de resistencia, por lo tanto, los valores que corresponden a su prueba comenzarán a graficarse hasta que comience a obtener los datos en el valor dos de resistencia.
+
+_**Nota:** Las figuras que se muestren al inicio pueden variar._
+
+
+
+ ![Graficas](https://github.com/IsauraRs/Turbina/blob/master/Manual/graficas1.png)
+
+_Figura10. Gráfica de resistencia vs revoluciones por minuto y de resistencia vs eficiencia del generador._
+
+
+
+![Gráficas2](https://github.com/IsauraRs/Turbina/blob/master/Manual/graficas2.png)
+
+_Figura11. Gráfica de resistencia vs eficiencia del generador y resistencia vs eficiencia de la turbina._
+
+
+
+## 3.1. Envío de reporte correspondiente a una prueba
+
+
+
+Una vez que decida concluir una prueba, para almacenar los datos en un reporte y enviarlo por correo electrónico, deberá dirijirse a la parte inferior de la página, donde encontrará un apartado en el cual deberá asignar un nombre al reporte y otro en el cual tendrá que ingresar el correo electrónico de destino. 
+
+ Este reporte será almacenado en una base de datos, por lo que, de requerirlo, podrá consultarlo posteriormente. Para saber más acerca de la consulta de reportes diríjase a la sección cinco (5) de este manual.
+
+_**Nota:** debido a que el sistema continuará registrando datos, deberá hacer el paso anterior lo más rápido posible, o con el tiempo suficiente, ya que este apartado se desplazará hacia abajo._
+
+
+
+![DatosCorreo](https://github.com/IsauraRs/Turbina/blob/master/Manual/envioReporteP.png)
+
+_Figura12. Apartado para la generación del reporte._
+
+
+
+Ya que ha ingresado el nombre para el reporte y el correo electrónico al que será enviado, presione el botón _"Send"_ . Esto puede demorar un par de segundos.
+
+
+
+![EnviarReporte](https://github.com/IsauraRs/Turbina/blob/master/Manual/enviarReporte.png)
+
+_Figura13. Enviar reporte._
+
+
+
+Esto cerrará el puerto serial de Arduino y lo dirigirá a la página principal, en donde verá un mensaje en el cual se indica el destinatario del reporte.
+
+
+
+![ReporteEnviado](https://github.com/IsauraRs/Turbina/blob/master/Manual/paginaInicioRE.png)
+
+_Figura14. Página de inicio una vez que se ha enviado el reporte._
+
+
+
+_**Nota:** esto genera que el puerto serial de Arduino se cierre, por lo que, para realizar una nueva prueba inmediatamente después de la que ha concluido, tendrá que "matar" la aplicación desde la terminal presionando las teclas ctrl y c simultáneamente y correr de nuevo la aplicación como lo hizo en el apartado dos (2)  "Inicio" en este manual. De no realizar este paso, la prueba no se reiniciará, sino que continuará a partir del útlimo valor de la prueba anterior, generando error en los cálculos._
 
