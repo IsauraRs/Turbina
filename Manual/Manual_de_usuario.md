@@ -48,11 +48,11 @@
 
 3. ### Adquisición de datos.
 
-    
+     
 
-    	1. #### Envío de reporte correspondiente a una prueba.
+     1. #### Envío de reporte correspondiente a una prueba.
 
-​    
+     
 
 4. ### Reportes.
 
@@ -359,5 +359,5 @@ _Figura14. Página de inicio una vez que se ha enviado el reporte._
 
 
 
-_**Nota:** esto genera que el puerto serial de Arduino se cierre, por lo que, para realizar una nueva prueba inmediatamente después de la que ha concluido, tendrá que "matar" la aplicación desde la terminal presionando las teclas ctrl y c simultáneamente y correr de nuevo la aplicación como lo hizo en el apartado dos (2)  "Inicio" en este manual. De no realizar este paso, la prueba no se reiniciará, sino que continuará a partir del útlimo valor de la prueba anterior, generando error en los cálculos._
+_**Nota:** esto genera que el puerto serial de Arduino se cierre, por lo que, para realizar una nueva prueba inmediatamente después de la que ha concluido, tendrá que "matar" la aplicación desde la terminal presionando las teclas ctrl y c simultáneamente y correr de nuevo la aplicación como lo hizo en el apartado dos (2)  ["Inicio"](https://github.com/IsauraRs/Turbina/blob/master/Manual/Manual_de_usuario.md#2-inicio) en este manual. De no realizar este paso, la prueba no se reiniciará, sino que continuará a partir del útlimo valor de la prueba anterior, generando error en los cálculos._
 
