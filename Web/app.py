@@ -171,17 +171,17 @@ def consulta_grafrrpm():
         #grpmvl = gp.generar_PDFC(grpmv)#[0])
     return render_template("busqueda.html" , datos = grpmv , bandera = "11") #RvsRPM
 
-@app.route('/consulta/grafefg', methods = ['POST'])
+@app.route('/consulta/grafefg', methods = ['GET','POST'])
 def consulta_grafefg():
-
+    
     if request.method == 'POST':
         grefg = request.form['refg']
         grefgv = mc.vistagraph2(grefg)
         #threadCI = threading.Thread(target=grpmv)
         #threadCI.start()
-        #time.sleep(15)
+        #time.sleep(10)
         #grpmvl = gp.generar_PDFC(grpmv)#[0])
-    return render_template("busqueda.html" , datos = grefgv , bandera = "12") #RvsEf.Generador
+        return render_template("busqueda.html" , datos = grefgv , bandera = "12") #RvsEf.Generador
 
 @app.route('/consulta/grafeft', methods = ['POST'])
 def consulta_grafeft():
