@@ -424,12 +424,15 @@
     </table>
     {% endif %} 
     {% if bandera=="11" %}
+    <div class="p-3 mb-2 bg-info text-white">Resistencia vs RPM</div>
     <img src="{{ url_for('static', filename='img/RvsRPM.JPEG') }}" alt="TEXTO" width="640px" height="480px">
     {% endif %}
     {% if bandera=="12" %}
-    <img src="{{ url_for('static', filename='img/RvsEfG.JPEG') }}" alt="TEXTO" width="640px" height="480px">
+    <div class="p-3 mb-2 bg-danger text-white">Resistencia vs Eficiencia del generador</div>
+    <img src="{{ url_for('static', filename='/img/RvsEfG.JPEG') }}" alt="TEXTO" width="640px" height="480px">
     {% endif %}
     {% if bandera=="13" %}
+    <div class="p-3 mb-2 bg-success text-white">Resistencia vs Eficiencia de la turbina</div>
     <img src="{{ url_for('static', filename='img/RvsEfT.JPEG') }}" alt="TEXTO" width="640px" height="480px">
     {% endif %}
 {% endblock %}
