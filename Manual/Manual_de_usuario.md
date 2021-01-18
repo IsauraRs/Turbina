@@ -54,7 +54,7 @@
 
       
 
-5. ### Consultas a datos.
+5. ### [Consultas a datos.](https://github.com/IsauraRs/Turbina/blob/master/Manual/Manual_de_usuario.md#5--consultas-a-datos)
 
       
 
@@ -366,4 +366,132 @@ _**Nota:** esto genera que el puerto serial de Arduino se cierre, por lo que, pa
 # 5.- Consultas a datos.
 
 Para realizar consultas a datos, presione el botón "Query".
+
+
+
+![QueryButton](https://github.com/IsauraRs/Turbina/blob/master/Manual/QueryButton.png)
+
+_Figura15. Botón para consultar datos_
+
+
+
+Esto desplegará una lista de opciones de  parámetros a consultar.
+
+
+
+![OpcionesDeConsulta](https://github.com/IsauraRs/Turbina/blob/master/Manual/QueryRes4-00.png)
+
+![OpcionesDeConsulta2](https://github.com/IsauraRs/Turbina/blob/master/Manual/QueryRes4-14.png)
+
+_Figuras16 y 17. Página de consultas._
+
+
+
+ Para obtener un resultado, ingrese un valor a la casilla correspondiente al parámetro. Por ejemplo:
+
+
+
+![ConsultaDP](https://github.com/IsauraRs/Turbina/blob/master/Manual/DPQ.png)
+
+![ResultadoConsultaDP](https://github.com/IsauraRs/Turbina/blob/master/Manual/DPRes.png)
+
+_Figuras18 y 19. Ejemplo de búsqueda de determiado valor del potenciómetro digital._
+
+
+
+![ConsultaRPM](https://github.com/IsauraRs/Turbina/blob/master/Manual/RPMQ.png)
+
+![ResultadoConsultaRPM](https://github.com/IsauraRs/Turbina/blob/master/Manual/RPMRes.png)
+
+_Figuras20 y 21. Ejemplo de búsqueda de cierto valor de revoluciones por minuto._
+
+
+
+![ConsultaDVin](https://github.com/IsauraRs/Turbina/blob/master/Manual/DVinQ.png)
+
+![ResultadoConsultaDVin](https://github.com/IsauraRs/Turbina/blob/master/Manual/DVinRes.png)
+
+_Figuras22 y 23. Ejemplo de consulta a un valor de diferencial de voltaje de entrada (en el generador)._
+
+
+
+![ConsultaVin](https://github.com/IsauraRs/Turbina/blob/master/Manual/VinQ.png)
+
+![ResultadoConsultaVin](https://github.com/IsauraRs/Turbina/blob/master/Manual/VinRes.png)
+
+_Figuras24 y 25. Ejemplo de consulta a determinado valor de voltaje de entrada (en el generador)._
+
+
+
+![ConsultaDVout](https://github.com/IsauraRs/Turbina/blob/master/Manual/DVoutQ.png)
+
+![ResultadoConsultaDVout](https://github.com/IsauraRs/Turbina/blob/master/Manual/DVoutRes.png)
+
+_Figuras26 y 27. Ejemplo de consulta a un valor de diferencial de voltaje de salida (en la turbina)._
+
+
+
+![ConsultaVout](https://github.com/IsauraRs/Turbina/blob/master/Manual/VoutQ.png)
+
+![ResultadoConsultaVout](https://github.com/IsauraRs/Turbina/blob/master/Manual/VoutRes.png)
+
+_Figuras28 y 29. Ejemplo de búsqueda de un valor de voltaje de salida (en la turbina)._
+
+
+
+![ConsultaTiempo](https://github.com/IsauraRs/Turbina/blob/master/Manual/TiempoQ.png)
+
+![ResultadoConsultaTiempo](https://github.com/IsauraRs/Turbina/blob/master/Manual/TiempoRes.png)
+
+_Figuras30 y 31. Ejemplo de consulta a determinado valor de tiempo._
+
+
+
+![ConsultaPotencia](https://github.com/IsauraRs/Turbina/blob/master/Manual/PotenciaQ.png)
+
+![ResultadoConsultaPotencia](https://github.com/IsauraRs/Turbina/blob/master/Manual/PotenciaRes.png)
+
+_Figuras32 y 33. Ejemplo de búsqueda de cierto valor de potencia._
+
+
+
+Para consultar una gráfica, deberá ingresar la fecha de la prueba en la que se realizó en formato año[4 dígitos]-mes[2 dígitos]-día[2 dígitos], por ejemplo:
+
+
+
+![ConsultaRvsRPM](https://github.com/IsauraRs/Turbina/blob/master/Manual/RvsRPMQ.png)
+
+![ResultadoRvsRPM](https://github.com/IsauraRs/Turbina/blob/master/Manual/RvsRPMRes.png)
+
+_Figuras34 y 35. Ejemplo de búsqueda de gráfica de resistencia vs revoluciones por minuto._
+
+
+
+![ConsultaRvsEfG](https://github.com/IsauraRs/Turbina/blob/master/Manual/RvsEfGQ.png)
+
+![ResultadoRvsEfG](https://github.com/IsauraRs/Turbina/blob/master/Manual/RvsEfGRes.png)
+
+_Figuras36 y 37. Ejemplo de consulta a gráfica de resistencia vs eficiencia del generador._
+
+
+
+![ConsultaRvsEfT](https://github.com/IsauraRs/Turbina/blob/master/Manual/RvsEfTQ.png)
+
+![ResultadoRvsEfT](https://github.com/IsauraRs/Turbina/blob/master/Manual/RvsEfTRes.png)
+
+_Figuras38 y 39. Ejemplo de consulta de gráfica de resistencia vs eficiencia de la turbina._
+
+
+
+_**Nota**: Para buscar una gráfica después de haber consultado otra  de un mismo parámetro, por ejemplo, consultar la gráfica de resistencia vs revoluciones por minuto con fecha 2020-12-10 y posteriormente querer consultar la gráfica de  resistencia vs revoluciones por minuto con fecha 2021-01-06, después de presionar el botón "Send" y que traiga un resultado, debe "refrescar" o "volver a cargar" la página para que aparezca la gráfica correcta con el botón en forma de flecha , de otro modo, la que aparecerá será la de la búsqueda anterior._
+
+
+
+![Refresh](https://github.com/IsauraRs/Turbina/blob/master/Manual/refreshGraph.png)
+
+_Figura40. Símbolo "refresh"._
+
+
+
+
 
