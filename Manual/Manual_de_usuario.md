@@ -46,7 +46,7 @@
 
      
 
-3. ### [Adquisición de datos.]( (https://github.com/IsauraRs/Turbina/blob/master/Manual/Manual_de_usuario.md#3-adquisici%C3%B3n-de-datos))
+3. ### [Adquisición de datos.](https://github.com/IsauraRs/Turbina/blob/master/Manual/Manual_de_usuario.md#3-adquisici%C3%B3n-de-datos)
 
    
 
