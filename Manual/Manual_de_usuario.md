@@ -32,7 +32,7 @@
 
 
 
-1. ### Instalación y conexión.
+1. ### [Instalación](https://github.com/IsauraRs/Turbina/blob/master/Manual/Manual_de_usuario.md#1-instalaci%C3%B3n) y [conexión.](https://github.com/IsauraRs/Turbina/blob/master/Manual/Manual_de_usuario.md#conexi%C3%B3n)
 
    
 
@@ -42,21 +42,21 @@
 
        
 
-2. ### Inicio.
+2. ### [Inicio.](https://github.com/IsauraRs/Turbina/blob/master/Manual/Manual_de_usuario.md#2-inicio)
 
      
 
-3. ### Adquisición de datos.
+3. ### [Adquisición de datos.]( (https://github.com/IsauraRs/Turbina/blob/master/Manual/Manual_de_usuario.md#3-adquisici%C3%B3n-de-datos))
 
-     
+   
 
-4. ### Reportes.
+4. ### [Reportes.](https://github.com/IsauraRs/Turbina/blob/master/Manual/Manual_de_usuario.md#4-reportes)
 
-     
+      
 
 5. ### Consultas a datos.
 
-     
+      
 
 6. ### Consultas a reportes.
 
@@ -148,11 +148,11 @@ sudo pip3 install serial
 
 En MacOS: ingrese al menú en el logo "Apple", de click en "Preferencias del Sistema" y posteriormente de click en "Bluetooth".
 
- Busque en la lista el dispositivo de nombre "GUS", de click en él y luego en "Conectar", en caso de que solicite la contraseña ingrese " 1234 " o " 0000 ".
+ Busque en la lista el dispositivo de nombre "SDAdD", de click en él y luego en "Conectar", en caso de que solicite la contraseña ingrese " 1234 " o " 0000 ".
 
-En Linux: Ingrese a "Configuración", diríjase a "Bluetooth" y seleccione el dispositivo de nombre "GUS", ingrese la contraseña " 1234 ", en caso de que la contraseña sea incorrecta, ingrese " 0000 ".
+En Linux: Ingrese a "Configuración", diríjase a "Bluetooth" y seleccione el dispositivo de nombre "SDAdD", ingrese la contraseña " 1234 ", en caso de que la contraseña sea incorrecta, ingrese " 0000 ".
 
-Si su distribución es Ubuntu (o alguna distribución basada en Debian) y falla la conexión con el paso anterior, vaya nuevamente a "Configuración", seleccione el dispositivo "GUS", revise y copie la dirección del dispositivo.
+Si su distribución es Ubuntu (o alguna distribución basada en Debian) y falla la conexión con el paso anterior, vaya nuevamente a "Configuración", seleccione el dispositivo "SDAdD", revise y copie la dirección del dispositivo.
 
 
 
@@ -196,7 +196,7 @@ Y busque los dispositivos:
 scan on
 ```
 
-Empareje el dispositivo cuya dirección corresponda a la de "GUS":
+Empareje el dispositivo cuya dirección corresponda a la de "SDAdD":
 
 ```
 pair 20:18:07:13:62:E2
@@ -319,7 +319,7 @@ _Figura11. Gráfica de resistencia vs eficiencia del generador y resistencia vs 
 
 
 
-# 4. Reportes
+# 4. Reportes.
 
 ### Envío de reporte correspondiente a una prueba.
 
@@ -358,4 +358,12 @@ _Figura14. Página de inicio una vez que se ha enviado el reporte._
 
 
 _**Nota:** esto genera que el puerto serial de Arduino se cierre, por lo que, para realizar una nueva prueba inmediatamente después de la que ha concluido, tendrá que "matar" la aplicación desde la terminal presionando las teclas ctrl y c simultáneamente y correr de nuevo la aplicación como lo hizo en el apartado dos (2)  ["Inicio"](https://github.com/IsauraRs/Turbina/blob/master/Manual/Manual_de_usuario.md#2-inicio) en este manual. De no realizar este paso, la prueba no se reiniciará, sino que continuará a partir del útlimo valor de la prueba anterior, generando error en los cálculos._
+
+
+
+
+
+# 5.- Consultas a datos.
+
+Para realizar consultas a datos, presione el botón "Query".
 

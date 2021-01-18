@@ -31,7 +31,10 @@ def readIm3():
 
 
 
-def imCarga():
+def imCarga(fecha):
+
+    if fecha=="":
+        fecha="NoDate"
 
     conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
     cursor = conexion.cursor()
@@ -41,7 +44,7 @@ def imCarga():
     binary2 = psycopg2.Binary(iml2)
     iml3 = readIm3()
     binary3 = psycopg2.Binary(iml3)
-    cursor.execute("INSERT INTO efgraph(grafica , grafica2, grafica3) VALUES (%s, %s, %s);",(binary,binary2,binary3 ))
+    cursor.execute("INSERT INTO efgraph(grafica , grafica2, grafica3, fecha) VALUES (%s, %s, %s, %s);",(binary,binary2,binary3,fecha ))
     conexion.commit()
     cursor.close()
     conexion.close()

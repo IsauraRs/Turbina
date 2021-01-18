@@ -19,6 +19,7 @@ import spreadSheetReport as ss
 #import gatheringData as gaD
 #from gatheringData import gdList
 
+
 try:
 
     #Módulos propios 
@@ -203,8 +204,8 @@ def graficarmostrar():
     
     datos = ds.vfl          
     gf.graficaPotencia(datos) #datos
-
-    cg.imCarga()
+    today = date.today()
+    cg.imCarga(str(today))
     return render_template ("datos.html" , datos = datos , bandera = 1) #datos = datos
 
 @app.route('/Regresar', methods = ['POST'])

@@ -47,13 +47,13 @@ def vistavolt(voltVal):
     
     conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
     cursor = conexion.cursor()
-    cursor.execute("SELECT valor_pot_digt, rev_min, dif_01, voltaje_in, dif_23, voltaje_out, tiemp, potencia, ef_generador, ef_turbina FROM lectura WHERE voltaje = %s" , (voltVal, ))
+    cursor.execute("SELECT valor_pot_digt, rev_min, dif_01, voltaje_in, dif_23, voltaje_out, tiemp, potencia, ef_generador, ef_turbina FROM lectura WHERE voltaje_in = %s" , (voltVal, ))
     vd = cursor.fetchall()
 
     for u in vd:
         vl.append(u)
     
-    cursor.execute("SELECT COUNT (*) FROM lectura WHERE voltaje = %s" , (voltVal, ))
+    cursor.execute("SELECT COUNT (*) FROM lectura WHERE voltaje_in = %s" , (voltVal, ))
     cdata1 = cursor.fetchall()
 
     for h in cdata1:
@@ -189,13 +189,13 @@ def vistaVoltin(vinVal):
 
     conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
     cursor = conexion.cursor()
-    cursor.execute("SELECT valor_pot_digt, rev_min, dif_01, voltaje_in, dif_23, voltaje_out, tiemp, potencia, ef_generador, ef_turbina  FROM lectura WHERE voltajein = %s" , (vinVal, ))
+    cursor.execute("SELECT valor_pot_digt, rev_min, dif_01, voltaje_in, dif_23, voltaje_out, tiemp, potencia, ef_generador, ef_turbina  FROM lectura WHERE voltaje_out = %s" , (vinVal, ))
     vinf = cursor.fetchall()
 
     for h in vinf:
         voltinl.append(h)
 
-    cursor.execute("SELECT COUNT (*) FROM lectura WHERE  voltajein = %s" , (vinVal, ))
+    cursor.execute("SELECT COUNT (*) FROM lectura WHERE  voltaje_out = %s" , (vinVal, ))
     vcf = cursor.fetchall()
 
     for r in vcf:
@@ -357,11 +357,11 @@ def writeGraph(g1c):
     imout = open('static/img/RvsRPM.JPEG' , 'wb')
     imout.write(g1c)
 
-def vistagraph1(id):
+def vistagraph1(date1):
 
     conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
     cursor = conexion.cursor()
-    cursor.execute("SELECT grafica FROM efgraph WHERE pic_id = %s" , (id,))
+    cursor.execute("SELECT grafica FROM efgraph WHERE fecha = %s" , (date1,))
     g1c = cursor.fetchone()[0]
     writeGraph(g1c)
 
@@ -386,11 +386,11 @@ def writeGraph2(g2c):
     imout2 = open('static/img/RvsEfG.JPEG' , 'wb')
     imout2.write(g2c)
 
-def vistagraph2(id):
+def vistagraph2(date2):
 
     conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
     cursor = conexion.cursor()
-    cursor.execute("SELECT grafica2 FROM efgraph WHERE pic_id = %s" , (id,))
+    cursor.execute("SELECT grafica2 FROM efgraph WHERE fecha = %s" , (date2,))
     g2c = cursor.fetchone()[0]
     writeGraph2(g2c)
 
@@ -416,11 +416,11 @@ def writeGraph3(g3c):
     imout3 = open('static/img/RvsEfT.JPEG' , 'wb')
     imout3.write(g3c)
 
-def vistagraph3(id):
+def vistagraph3(date):
 
     conexion = psycopg2.connect(host=host, database=database, user=user, password=password)
     cursor = conexion.cursor()
-    cursor.execute("SELECT grafica3 FROM efgraph WHERE pic_id = %s" , (id,))
+    cursor.execute("SELECT grafica3 FROM efgraph WHERE fecha = %s" , (date,))
     g3c = cursor.fetchone()[0]
     writeGraph3(g3c)
 
