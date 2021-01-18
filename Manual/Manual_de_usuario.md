@@ -325,7 +325,7 @@ _Figura11. Gráfica de resistencia vs eficiencia del generador y resistencia vs 
 
 Una vez que decida concluir una prueba, para almacenar los datos en un reporte y enviarlo por correo electrónico, deberá dirijirse a la parte inferior de la página, donde encontrará un apartado en el cual deberá asignar un nombre al reporte y otro en el cual tendrá que ingresar el correo electrónico de destino. 
 
- Este reporte será almacenado en una base de datos, por lo que, de requerirlo, podrá consultarlo posteriormente. Para saber más acerca de la consulta de reportes diríjase a la sección seis (6) "Consultas a reportes" de este manual.
+ Este reporte será almacenado en una base de datos, por lo que, de requerirlo, podrá consultarlo posteriormente. Para saber más acerca de la consulta de reportes diríjase a la sección seis (6) ["Consultas a reportes"]() de este manual.
 
 _**Nota:** debido a que el sistema continuará registrando datos, deberá hacer el paso anterior lo más rápido posible, o con el tiempo suficiente, ya que este apartado se desplazará hacia abajo._
 
@@ -494,4 +494,10 @@ _Figura40. Símbolo "refresh"._
 
 
 
+
+# 6. Consultas a reportes.
+
+
+
+Los reportes 
 
