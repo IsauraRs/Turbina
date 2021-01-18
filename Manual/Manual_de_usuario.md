@@ -58,9 +58,15 @@
 
       
 
-6. ### Consultas a reportes.
+6. ### [Consultas a reportes.](https://github.com/IsauraRs/Turbina/blob/master/Manual/Manual_de_usuario.md#6-consultas-a-reportes)
 
 
+
+7. ### Salir del sistema.
+
+
+
+8. ### Conexiones de hardware.
 
 
 
@@ -325,7 +331,7 @@ _Figura11. Gráfica de resistencia vs eficiencia del generador y resistencia vs 
 
 Una vez que decida concluir una prueba, para almacenar los datos en un reporte y enviarlo por correo electrónico, deberá dirijirse a la parte inferior de la página, donde encontrará un apartado en el cual deberá asignar un nombre al reporte y otro en el cual tendrá que ingresar el correo electrónico de destino. 
 
- Este reporte será almacenado en una base de datos, por lo que, de requerirlo, podrá consultarlo posteriormente. Para saber más acerca de la consulta de reportes diríjase a la sección seis (6) ["Consultas a reportes"]() de este manual.
+ Este reporte será almacenado en una base de datos, por lo que, de requerirlo, podrá consultarlo posteriormente. Para saber más acerca de la consulta de reportes diríjase a la sección seis (6) ["Consultas a reportes"](https://github.com/IsauraRs/Turbina/blob/master/Manual/Manual_de_usuario.md#6-consultas-a-reportes) de este manual.
 
 _**Nota:** debido a que el sistema continuará registrando datos, deberá hacer el paso anterior lo más rápido posible, o con el tiempo suficiente, ya que este apartado se desplazará hacia abajo._
 
@@ -497,7 +503,65 @@ _Figura40. Símbolo "refresh"._
 
 # 6. Consultas a reportes.
 
+Como se ha descrito en la sección cuatro (4) ["Reportes"](https://github.com/IsauraRs/Turbina/blob/master/Manual/Manual_de_usuario.md#4-reportes) , es posible almacenar los reportes correspondientes a las pruebas realizadas si se han realizado los pasos mencionados en dicha sección, y del mismo modo, es posible consultarlos, presione el botón "Vew reports".
 
 
-Los reportes 
+
+![VewReportsButton](https://github.com/IsauraRs/Turbina/blob/master/Manual/ViewReportsButton.png)
+
+_Figura41. Botón "View reports"._
+
+
+
+Esto desplegará una lista con todos los nombres de los reportes que han sido almacenados. Para obtener alguno, ingrese su correo electrónico en la casilla inmediata al nombre del reporte y de click en el botón "Send".
+
+
+
+![VewReportsRes](https://github.com/IsauraRs/Turbina/blob/master/Manual/ViewReportsRes.png) 
+
+_Figura42. Ejemplo del listado de reportes._
+
+
+
+Consulte en la bandeja de entrada o en correos no deseados (o Spam) del correo que ingresó, el asunto del correo es "Reporte SdAD" y contendrá dos archivos, el reporte en formato PDF y en formato xlsx.
+
+
+
+![ReportesEnviados](https://github.com/IsauraRs/Turbina/blob/master/Manual/ReportesEnviados.png)
+
+_Figura43. Ejemplo del correo recibido como resultado de la consulta a un reporte._
+
+
+
+
+
+# 7. Salir del sistema.
+
+Para salir del sistema diríjase a la página principal del Sistema de Adquisición de Datos y de click en el botón "Exit".
+
+
+
+![ExitButton](https://github.com/IsauraRs/Turbina/blob/master/Manual/ExitButton.png)
+
+_Figura44. Botón "Exit"._
+
+
+
+Esto provocará que se cierre la conexión con el servidor, sin embargo, para detener completamente la aplicación en su dispositivo, vaya a la terminal en donde "corrió" la aplicación y presione las teclas ctrl y c simultáneamente.
+
+
+
+![ClosedServer](https://github.com/IsauraRs/Turbina/blob/master/Manual/ExitRes.png)
+
+_Figura45. Conexión perdida con el servidor._
+
+
+
+
+
+# 8.- Conexiones de hardware.
+
+
+
+
 
