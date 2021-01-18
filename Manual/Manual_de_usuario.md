@@ -62,11 +62,11 @@
 
 
 
-7. ### Salir del sistema.
+7. ### [Salir del sistema.](https://github.com/IsauraRs/Turbina/blob/master/Manual/Manual_de_usuario.md#7-salir-del-sistema)
 
 
 
-8. ### Conexiones de hardware.
+8. ### [Conexiones de hardware.](https://github.com/IsauraRs/Turbina/blob/master/Manual/Manual_de_usuario.md#8--conexiones-de-hardware)
 
 
 
@@ -554,6 +554,18 @@ Esto provocará que se cierre la conexión con el servidor, sin embargo, para de
 ![ClosedServer](https://github.com/IsauraRs/Turbina/blob/master/Manual/ExitRes.png)
 
 _Figura45. Conexión perdida con el servidor._
+
+
+
+_**Nota**: Para regresar a la página de inicio del Sistema de Adquisición de Datos desde cualquier apartado del mismo, puede dar click sobre el logotipo del Insituto de Ingeniería._
+
+
+
+![BackButton](https://github.com/IsauraRs/Turbina/blob/master/Manual/backButton.png)
+
+_Figura46. Logotipo del Instituto de Ingeniería como botón de regreso ._
+
+
 
 
 
