@@ -573,7 +573,12 @@ _Figura46. Logotipo del Instituto de Ingeniería como botón de regreso ._
 
 # 8.- Conexiones de hardware.
 
+El sistema de adquisición de datos cuenta con nueve cables, tres de ellos van conectados al sensor de efecto Hall (anaranjado, amarillo y verde), los otros seis son para el generador y para la turbina o el motor (dependiendo del uso), el cable negro debe ir conectado al polo negativo del generador, el rojo al polo positivo del generador, el gris al polo negativo de la tubina o motor y el blanco/beige debe ir conectado al polo positivo de la turbina o motor. Estos cables son para la lectura del diferencial de voltaje de cada uno.
+
+Los cables restantes, amarillo y verde, deben ir a la alimentación del generador, siendo el amarillo al polo positivo y el verde al polo negativo.
 
 
 
+![Conexiones](https://github.com/IsauraRs/Turbina/blob/master/Manual/ConexHardware_bb.png)
 
+_Figura47. Vista de planta del esquema en fritzing del sistema de adquisición de datos, el motor del lado derecho representa al generador y el del lado izquierdo a la tubina o motor a caracterizar._
