@@ -5,6 +5,16 @@
 //Digital potentiometer library
 #include <DigiPotX9Cxxx.h>
 
+//Bluetooth module
+#include<SoftwareSerial.h>
+
+int RX = 1 , TX = 0;
+
+SoftwareSerial BT = SoftwareSerial(RX , TX);
+
+char ser;
+char BTData;
+
 Adafruit_ADS1115 ads;
 
 //Conversion scale factor
@@ -22,6 +32,7 @@ const int LEDPin2= 6;
 float hall_thresh = 11.0;
  
 void setup() {
+  
   pinMode(LEDPin, OUTPUT);
   pinMode(LEDPin2, OUTPUT);
   Serial.begin(115200);
@@ -30,11 +41,19 @@ void setup() {
   
   //Starts ADS1115
   ads.begin();
+
+  Serial.begin(9600);
+  //delay(200);
   
+  //Bluetooth module
+  BT.begin(9600);
 }
  
 void loop() {
-// Definición de parámetros para el contador
+
+if (Serial.available()>0)
+{
+  // Definición de parámetros para el contador
   float hall_count = 1.0;
   // Inicio de conteo de tiempo en microsegundos
   float start = micros();
@@ -189,5 +208,8 @@ void loop() {
         }
       }
     }
+  
+}
+
             
 }
