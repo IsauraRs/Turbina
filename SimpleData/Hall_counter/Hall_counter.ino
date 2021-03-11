@@ -103,6 +103,7 @@ if (Serial.available()>0)
     //  Serial.println(" Hz");
       delay(1); // delay entre lecturas para estabilidad
       
+      Serial.print("ValDP: ");
       Serial.println((i), DEC); //i+1023    ------------1
       pot.increase(i);//1); //i+1000
       
@@ -111,24 +112,24 @@ if (Serial.available()>0)
       short diferencia_2_3 = ads.readADC_Differential_2_3();
       float voltsEntregados = (diferencia_2_3 * factorEscala)/1000.0;
       
-      //Serial.print("Diferencia 0-1");
+      Serial.print("Diferencia 0-1");
       Serial.println(diferencia_0_1);              //-----------3
-      //Serial.print("Voltaje: ");
+      Serial.print("Voltaje: ");
       Serial.println(volts,4);                   // ---------------4
-      //Serial.print("difEntr");
+      Serial.print("difEntregados");
       Serial.println(diferencia_2_3);             //-----------------5
-      //Serial.print("voltsEnt");
+      Serial.print("voltsEntregados");
       Serial.println(voltsEntregados,4);            // --------------6
       
-      if (j <41)
+      if (j <101)
       {
         i = i;
-        //Serial.println("i es igual");
-        //Serial.print(i);
+        Serial.println("i es igual");
+        Serial.print(i);
       }
       else {
         i++;
-        //Serial.print("Ya aumento i");
+        Serial.print("Ya aumento i");
       }
       delay(1000);
     }
@@ -176,6 +177,7 @@ if (Serial.available()>0)
           //  Serial.println(" Hz");
             delay(1); // delay entre lecturas para estabilidad
             
+            Serial.print("ValDP: ");
             Serial.println((i), DEC); //i+1023    ------------1
             pot.increase(i);//1); //i+1000
             
@@ -184,24 +186,24 @@ if (Serial.available()>0)
             short diferencia_2_3 = ads.readADC_Differential_2_3();
             float voltsEntregados = (diferencia_2_3 * factorEscala)/1000.0;
             
-            //Serial.print("Diferencia 0-1");
+            Serial.print("Diferencia 0-1");
             Serial.println(diferencia_0_1);              //-----------3
-            //Serial.print("Voltaje: ");
+            Serial.print("Voltaje: ");
             Serial.println(volts,4);                   // ---------------4
-            //Serial.print("difEntr");
+            Serial.print("difEntregados");
             Serial.println(diferencia_2_3);             //-----------------5
-            //Serial.print("voltsEnt");
+            Serial.print("voltsEntregados");
             Serial.println(voltsEntregados,4);            // --------------6
             
-            if (j <41)
+            if (j <101)
             {
               i = i;
-              //Serial.println("i es igual");
-              //Serial.print(i);
+              Serial.println("i es igual");
+              Serial.print(i);
             }
             else {
               i++;
-              //Serial.print("Ya aumento i");
+              Serial.print("Ya aumento i");
             }
             delay(1000);
           }
